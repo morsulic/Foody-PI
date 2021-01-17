@@ -1,43 +1,48 @@
 <template>
-  <div class="about">
-    <h1>This is an sign up page</h1>
+  <div class="signUp">
+    <h1>Prijavite se</h1>
     <div class="container">
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="email">Email adresa</label>
               <input
                 type="email"
+                v-model="korisnik"
                 class="form-control"
-                id="exampleInputEmail1"
+                id="email"
                 aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Email"
               />
               <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
+                >Vaš email je siguran s nama.</small
               >
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="lozinka1">Lozinka</label>
               <input
                 type="password"
+                v-model="lozinka"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
+                id="lozinka1"
+                placeholder="Lozinka"
               />
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="lozinka2">Ponovi lozinku</label>
               <input
                 type="password"
+                v-model="ponoviLozinku"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
+                id="lozinka2"
+                placeholder="Lozinka"
               />
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" @click="signup" class="btn btn-primary">
+              Potvrdi
+            </button>
           </form>
         </div>
         <div class="col-sm"></div>
@@ -46,5 +51,31 @@
   </div>
 </template>
 <script>
-export default {};
+import { firebase } from "@/firebase.js";
+export default {
+  name: "Signup",
+  data() {
+    return {
+      korisnik: "",
+      lozinka: "",
+      ponoviLozinku: "",
+    };
+  },
+
+  methods: {
+    signup() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.korisnik, this.lozinka)
+        .then(function() {
+          console.log("Uspješna registracija");
+        })
+        .catch(function(error) {
+          console.error("Došlo je do greške", error);
+        });
+
+      console.log("Nastavak");
+    },
+  },
+};
 </script>
