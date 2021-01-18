@@ -1,14 +1,69 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>|
+      <router-link to="Home" v-if="store.currentUser">Home</router-link>|
       <router-link to="/signUp">Sign up</router-link>|
-      <router-link to="/login">Login</router-link> 
+      <router-link to="/login">Login</router-link>
+      <a
+        href="#"
+        v-if="store.currentUser"
+        @click.prevent="logout"
+        class="nav-link"
+        >Logout
+      </a>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+<script>
+import store from "@/store.js";
+import { firebase } from "@/firebase";
+import router from "@/router";
 
+firebase.auth().onAuthStateChanged((user) => {
+  const currentRoute = router.currentRoute;
+
+  if (user) {
+    //user is signed in.
+    console.log("***" + user.email);
+    store.currentUser = user.email;
+
+    if (!currentRoute.meta.needsUser) {
+      router.push({ name: "Home" });
+    }
+  } else {
+    //user is not signed in.
+    console.log("***No user");
+    store.currentUser = null;
+
+    if (currentRoute.meta.needsUser) {
+      router.push({ name: "Login" });
+    }
+  }
+});
+
+export default {
+  name: "app",
+  data() {
+    //funkcija
+    return {
+      //objekt
+      store: store,
+    };
+  },
+
+  methods: {
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ name: "Login" });
+        });
+    },
+  },
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
