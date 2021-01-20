@@ -1,13 +1,17 @@
 <template>
   <div class="signUp">
-    <h1>Prijavite se</h1>
     <div class="container">
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-          <form>
+          <form class="login-form">
+              <h1 style="padding: 45px;">
+                <span style='color: #000'>F</span>
+                <span style='color: #FF7043'>oo</span>
+                <span style='color: #000'>dy</span>
+              </h1>
+              <h2>Create an account</h2>
             <div class="form-group">
-              <label for="email">Email adresa</label>
               <input
                 type="email"
                 v-model="korisnik"
@@ -16,34 +20,29 @@
                 aria-describedby="emailHelp"
                 placeholder="Email"
               />
-              <small id="emailHelp" class="form-text text-muted"
-                >Vaš email je siguran s nama.</small
-              >
             </div>
             <div class="form-group">
-              <label for="lozinka1">Lozinka</label>
               <input
                 type="password"
                 v-model="lozinka"
                 class="form-control"
                 id="lozinka1"
-                placeholder="Lozinka"
+                placeholder="Password"
               />
             </div>
-            <div class="form-group">
-              <label for="lozinka2">Ponovi lozinku</label>
+            <div class="form-group" style="padding-bottom:15px;">
               <input
                 type="password"
                 v-model="ponoviLozinku"
                 class="form-control"
                 id="lozinka2"
-                placeholder="Lozinka"
+                placeholder="Repeat password"
               />
             </div>
-            <button type="button" @click="signup" class="btn btn-primary">
-              Potvrdi
-            </button>
+            <button type="button" @click="signup" class="btn btn-primary">Sign up</button>
+            <p>Already have an account? <router-link to="/login">Log in</router-link></p>
           </form>
+
         </div>
         <div class="col-sm"></div>
       </div>
@@ -83,3 +82,8 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  @import '@/assets/scss/main.scss';
+</style>
+

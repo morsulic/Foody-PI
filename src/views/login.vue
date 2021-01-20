@@ -1,24 +1,27 @@
 <template>
   <div class="about">
-    <h1>Log in</h1>
     <div class="container">
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-          <form>
+          <form class="login-form">
+              <img src="@/assets/img/foody.png" alt="" height="200">
+              <h1>
+                <span style='color: #000'>F</span>
+                <span style='color: #FF7043'>oo</span>
+                <span style='color: #000'>dy</span>
+              </h1>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
                 v-model="user"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Email"
               />
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+            <div class="form-group" style="padding-bottom:15px;">
               <input
                 type="password"
                 v-model="password"
@@ -30,6 +33,7 @@
             <button type="button" @click="login" class="btn btn-primary">
               Login
             </button>
+            <p>Don't have an account? <router-link to="/signUp">Sign up</router-link></p>
           </form>
         </div>
         <div class="col-sm"></div>
@@ -64,3 +68,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  @import '@/assets/scss/main.scss';
+</style>

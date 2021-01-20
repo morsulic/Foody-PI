@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="Home" v-if="store.currentUser">Home</router-link>|
+      <router-link to="/mainMenu">Menu</router-link>|
       <router-link to="/signUp">Sign up</router-link>|
       <router-link to="/login">Login</router-link>
       <a
@@ -12,7 +13,11 @@
         >Logout
       </a>
     </div>
-    <router-view />
+    <div class="vertical-center">
+        <div class="inner-block">
+          <router-view />
+        </div>
+      </div>
   </div>
 </template>
 <script>
@@ -85,4 +90,5 @@ export default {
     }
   }
 }
+
 </style>
