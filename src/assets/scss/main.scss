@@ -1,0 +1,124 @@
+// Variables
+$green: #9bcb3b;
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+* { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+
+
+body { 
+  background-color: #fff;
+}
+
+h1 { 
+  font-size: 45px; 
+  font-weight: normal;
+  margin: 0; 
+  padding: 0; 
+  margin-bottom: 20px;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2 { 
+  font-size: 15px; 
+  font-weight: normal;
+  margin: 0; 
+  padding: 10px 35px; 
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: left;
+  color: #000;
+}
+
+p {
+  font-size: 12px;
+  color: #444;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+a {
+  color: #8bc34a;
+
+  &.router-link-exact-active {
+    color:#8bc34a;
+  }
+}
+
+a:hover {
+  color: #8bc34a;
+  text-decoration: underline;
+  text-decoration-color: #8bc34a;
+}
+
+form.login-form {
+  background-image: none;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 50px auto 0 auto;
+  padding: 25px 15px;
+  text-align: center;
+  width: 100%;
+}
+
+label {
+  display:block; 
+  width:100%;
+  text-align:left;
+  padding: 0px 36px;
+  font-size: 12px;  
+}
+
+input, button {
+  border-radius: 3px;
+}
+
+input {
+  border: 1px solid #dbd9d9;
+  display: block;
+  font-size: 12px !important;
+  margin: auto !important;
+  outline: 0;
+  padding: 9px 12px;
+  width: 80% !important;
+  &:focus {
+    border: 1px solid darken(#dbd9d9, 20%);
+    outline: 0;
+  }
+}
+
+button {
+  background-color: $green !important;
+  border: 0 !important;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 10px;
+  outline: 0;
+  text-transform: uppercase;
+  width: 50%;
+  &:hover {
+    background-color: darken($green, 10%) !important;
+    cursor: pointer;
+  }
+  &:active { 
+    background-color: darken($green, 20%) !important;
+  }
+  &[disabled] {
+    background-color: darken($green, 20%) !important;
+    color: lighten(#000, 10%);
+    cursor: auto;
+  }
+}
+
+@media (min-width:768px) {
+  body { background-color: #dadbdd; }
+  form.login-form {
+    margin-top: 50px;
+    width: 375px;
+  }
+}
