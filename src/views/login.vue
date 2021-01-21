@@ -5,12 +5,12 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="login-form">
-              <img src="@/assets/img/foody.png" alt="" height="200">
-              <h1>
-                <span style='color: #000'>F</span>
-                <span style='color: #FF7043'>oo</span>
-                <span style='color: #000'>dy</span>
-              </h1>
+            <img src="@/assets/img/foody.png" alt="" height="200" />
+            <h1>
+              <span style="color: #000">F</span>
+              <span style="color: #FF7043">oo</span>
+              <span style="color: #000">dy</span>
+            </h1>
             <div class="form-group">
               <input
                 type="email"
@@ -33,7 +33,10 @@
             <button type="button" @click="login" class="btn btn-primary">
               Login
             </button>
-            <p>Don't have an account? <router-link to="/signUp">Sign up</router-link></p>
+            <p>
+              Don't have an account?
+              <router-link to="/signUp">Sign up</router-link>
+            </p>
           </form>
         </div>
         <div class="col-sm"></div>
@@ -57,18 +60,16 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user, this.password)
         .then((resault) => {
-          console.log("Uspješna prijava", resault);
+          console.log("You are now loged in :D");
         })
         .catch(function(e) {
-          console.error("Došlo je do pogreške", e);
+          alert(e);
         });
-
-      console.log("Nastavak");
     },
   },
 };
 </script>
 
 <style lang="scss">
-  @import '@/assets/scss/main.scss';
+@import "@/assets/scss/main.scss";
 </style>

@@ -2,9 +2,10 @@
   <div id="app">
     <div id="nav">
       <router-link to="Home" v-if="store.currentUser">Home</router-link>|
-      <router-link to="/mainMenu">Menu</router-link>|
-      <router-link to="/signUp">Sign up</router-link>|
-      <router-link to="/login">Login</router-link>
+      <router-link to="/mainMenu" v-if="store.currentUser">Menu</router-link>|
+      <router-link to="/recipe" v-if="store.currentUser">Recipe</router-link>|
+      <router-link to="/signUp" v-if="!store.currentUser">Sign up</router-link>|
+      <router-link to="/login" v-if="!store.currentUser">Login</router-link>
       <a
         href="#"
         v-if="store.currentUser"
@@ -14,10 +15,10 @@
       </a>
     </div>
     <div class="vertical-center">
-        <div class="inner-block">
-          <router-view />
-        </div>
+      <div class="inner-block">
+        <router-view />
       </div>
+    </div>
   </div>
 </template>
 <script>
@@ -34,7 +35,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.currentUser = user.email;
 
     if (!currentRoute.meta.needsUser) {
-      router.push({ name: "Home" });
+      router.push({ name: "mainMenu" });
     }
   } else {
     //user is not signed in.
@@ -90,5 +91,4 @@ export default {
     }
   }
 }
-
 </style>
