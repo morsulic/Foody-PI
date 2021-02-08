@@ -31,9 +31,9 @@
               </select>
             </div>
             <ingredient-card
-              v-for="ingredientes in ingredientes"
-              :key="ingredientes"
-              :info="ingredientes"
+              v-for="(ingridient, i) in ingredientes"
+              :key="ingredient + i"
+              :info="ingredient"
             />
             <div class="form-group">
               <label for="preparation">Preparation</label>
@@ -89,7 +89,6 @@
 import { db } from "@/firebase";
 import store from "@/store";
 import ingredientCard from "@/components/ingredientCard.vue";
-let brojac = 0;
 export default {
   name: "Recipe",
   data() {
@@ -105,31 +104,34 @@ export default {
     };
   },
   methods: {
-    numIngredientesMinus() {
-      brojac = brojac - 1;
-      ingridients = [];
-      let i = 0;
-      for (i; i < brojac; i++) {
-        this.ingredientes.pull({
-          br: i,
-        });
-      }
+    numIngredientesMinus: function(ingridientes) {
+      this.ingredientes.splice(ingridientes, 1);
     },
-    numIngredientesPlus() {
-      brojac++;
-
+    numIngredientesPlus: function(ingridientes) {
       this.ingredientes.push({
-        br: brojac,
+        ingredient: this.ingridient,
+        quantity: this.quantity,
+        measUnit: this.measUnit,
       });
     },
     addRecipe() {
+      for (i in this.ingridientes) {
+        this.ingridientes[i].push(
+          this.ingridient,
+          this.quantity,
+          this.measUnit
+        );
+      }
+
+      const ingred = ingredientes.map((obj) => {
+        return Object.assign({}, obj);
+      });
+
       db.collection("recipe")
         .add({
           name: this.name,
           category: this.category,
-          ingredient: this.ingredient,
-          quantity: this.quantity,
-          measUnit: this.measUnit,
+          ingredientes: this.ingred,
           preparation: this.preparation,
           user: this.user,
           dodano_u: Date.now(),

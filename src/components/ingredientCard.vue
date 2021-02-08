@@ -27,13 +27,17 @@
     <div class="col-4">
       <div class="form-group">
         <label for="measUnit">Meas unit</label>
-        <input
-          type="text"
-          v-model="measUnit"
+        <select
           class="form-control"
           id="measUnit"
-          placeholder="measUnit"
-        />
+          type="text"
+          v-model="measUnit"
+        >
+          <option>grams</option>
+          <option>mililiters</option>
+          <option>piece</option>
+          <option>pinch</option>
+        </select>
       </div>
     </div>
   </div>

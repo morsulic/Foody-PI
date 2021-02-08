@@ -72,7 +72,7 @@ export default {
           .auth()
           .createUserWithEmailAndPassword(this.user, this.password)
           .then(function() {
-            consol.log("You are now loged in :D");
+            console.log("You are now loged in :D");
           })
           .catch(function(error) {
             alert(error);

@@ -60,7 +60,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user, this.password)
         .then((resault) => {
-          console.log("You are now loged in :D");
+          console.log("You are now logged in :D");
         })
         .catch(function(e) {
           alert(e);
