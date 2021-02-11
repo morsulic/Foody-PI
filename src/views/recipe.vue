@@ -33,7 +33,7 @@
             <ingredient-card
               v-for="(ingridient, i) in ingredientes"
               :key="ingredient + i"
-              :info="ingredient"
+              :info="ingredientes"
             />
             <div class="form-group">
               <label for="preparation">Preparation</label>
@@ -115,7 +115,7 @@ export default {
       });
     },
     addRecipe() {
-      for (i in this.ingridientes) {
+      /* for (i in this.ingridientes) {
         this.ingridientes[i].push(
           this.ingridient,
           this.quantity,
@@ -123,15 +123,15 @@ export default {
         );
       }
 
-      const ingred = ingredientes.map((obj) => {
+      /*  const ingred = ingredientes.map((obj) => {
         return Object.assign({}, obj);
-      });
+      });*/
 
       db.collection("recipe")
         .add({
           name: this.name,
           category: this.category,
-          ingredientes: this.ingred,
+          ingredientes: this.ingredientes,
           preparation: this.preparation,
           user: this.user,
           dodano_u: Date.now(),

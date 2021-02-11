@@ -4,6 +4,9 @@
       <router-link to="Home" v-if="store.currentUser">Home</router-link>|
       <router-link to="/mainMenu" v-if="store.currentUser">Menu</router-link>|
       <router-link to="/recipe" v-if="store.currentUser">Recipe</router-link>|
+      <router-link to="/weeklyPlan" v-if="store.currentUser"
+        >Weekly plan</router-link
+      >|
       <router-link to="/signUp" v-if="!store.currentUser">Sign up</router-link>|
       <router-link to="/login" v-if="!store.currentUser">Login</router-link>
       <a
