@@ -1,49 +1,25 @@
-<template>
-  <div class="row">
-    <div class="col-4">
-      <div class="form-group">
-        <label for="ingredient">Ingredient</label>
-        <input
-          type="text"
-          v-model="ingredient"
-          class="form-control"
-          id="ingredient"
-          placeholder="Ingredient"
-        />
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <input
-          type="number"
-          v-model="quantity"
-          class="form-control"
-          id="quantity"
-          placeholder="Quantity"
-        />
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label for="measUnit">Meas unit</label>
-        <select
-          class="form-control"
-          id="measUnit"
-          type="text"
-          v-model="measUnit"
+<!--<template>
+  <tbody>
+    <tr>
+      <th scope="row">{{ info.br }}</th>
+      <td>{{ info.ingredient }}</td>
+      <td>{{ info.quantity }}</td>
+      <td>{{ info.measUnit }}</td>
+      <th scope="row">
+        <button
+          v-on:click="deleteIngredient"
+          type="submit"
+          class="btn btn-primary"
         >
-          <option>grams</option>
-          <option>mililiters</option>
-          <option>piece</option>
-          <option>pinch</option>
-        </select>
-      </div>
-    </div>
-  </div>
-</template>
+          x
+        </button>
+      </th>
+    </tr>
+  </tbody>
+</template>-->
 
-<script>
+<!--<script>
+/*
 export default {
   props: ["info"],
   name: "ingredientCard",
@@ -54,5 +30,5 @@ export default {
       measUnit: "",
     };
   },
-};
-</script>
+};*/
+</script>-->

@@ -5,35 +5,52 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="menu-form">
-              <h1 style="padding: 45px;">
-                <span style='color: #000'>F</span>
-                <span style='color: #FF7043'>oo</span>
-                <span style='color: #000'>dy</span>
-              </h1>
-              
-            <button type="button" class="btn btn-primary menu-button first" >
-              New weekly plan
-            </button><br>
+            <h1 style="padding: 45px;">
+              <span style="color: #000">F</span>
+              <span style="color: #FF7043">oo</span>
+              <span style="color: #000">dy</span>
+            </h1>
+
+            <button
+              type="button"
+              @click.prevent="pushRoute"
+              class="btn btn-primary menu-button first"
+            >
+              New weekly plan</button
+            ><br />
             <button type="button" class="btn btn-primary menu-button second">
-            View recipes
-            </button><br>
+              View recipes</button
+            ><br />
             <button type="button" class="btn btn-primary menu-button third">
-            Add new food
-            </button><br>
+              Add new food</button
+            ><br />
             <p style="padding-bottom:140px;"></p>
           </form>
-
         </div>
         <div class="col-sm"></div>
       </div>
     </div>
   </div>
 </template>
+<script>
+import router from "@/router";
+export default {
+  name: "mainMenu",
+  data() {
+    return {};
+  },
+  methods: {
+    pushRoute() {
+      router.push({ name: "WeeklyPlan" });
+    },
+  },
+};
+</script>
 
 <style lang="scss">
-  @import '@/assets/scss/main.scss';
+@import "@/assets/scss/main.scss";
 
-  button.menu-button {
+button.menu-button {
   background-color: $green !important;
   border: 0 !important;
   font-size: 14px;
@@ -56,17 +73,15 @@ form.menu-form {
   width: 100%;
 }
 
-button.first{
-    background-color:#8BC34A !important;
+button.first {
+  background-color: #8bc34a !important;
 }
 
-button.second{
-    background-color:#9DCC66 !important;
+button.second {
+  background-color: #9dcc66 !important;
 }
 
-button.third{
-    background-color:#B4DA88 !important;
+button.third {
+  background-color: #b4da88 !important;
 }
-
 </style>
-

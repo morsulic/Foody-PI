@@ -30,11 +30,87 @@
                 <option>Dinner</option>
               </select>
             </div>
-            <ingredient-card
-              v-for="(ingridient, i) in ingredientes"
-              :key="ingredient + i"
-              :info="ingredientes"
-            />
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ingredient">Ingredient</label>
+                  <input
+                    type="text"
+                    v-model="ingredient"
+                    class="form-control"
+                    id="ingredient"
+                    placeholder="Ingredient"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input
+                    type="number"
+                    v-model="quantity"
+                    class="form-control"
+                    id="quantity"
+                    placeholder="Quantity"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="measUnit">Meas unit</label>
+                  <select
+                    class="form-control"
+                    id="measUnit"
+                    type="text"
+                    v-model="measUnit"
+                  >
+                    <option>grams</option>
+                    <option>mililiters</option>
+                    <option>piece</option>
+                    <option>pinch</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <button
+                  type="button"
+                  @click.prevent="addIngredient"
+                  class="btn btn-primary"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Meas unit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody v-for="(ing, i) in ingredientes" :key="i">
+                  <tr>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ ing.ingredient }}</td>
+                    <td>{{ ing.quantity }}</td>
+                    <td>{{ ing.measUnit }}</td>
+                    <td>
+                      <button
+                        type="button"
+                        @click.prevent="deleteIngredient(i)"
+                        class="btn btn-primary"
+                      >
+                        x
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="form-group">
               <label for="preparation">Preparation</label>
               <textarea
@@ -52,7 +128,7 @@
         </div>
 
         <div class="col-sm">
-          <form @submit.prevent="numIngredientesMinus">
+          <!--  <form @submit.prevent="numIngredientesMinus">
             <div class="form-group">
               <label for="ing">Remove ingredient</label>
               <input
@@ -79,7 +155,7 @@
             <button type="submit" class="btn btn-primary">
               +
             </button>
-          </form>
+          </form>-->
         </div>
       </div>
     </div>
@@ -88,15 +164,16 @@
 <script>
 import { db } from "@/firebase";
 import store from "@/store";
-import ingredientCard from "@/components/ingredientCard.vue";
+//import ingredientCard from "@/components/ingredientCard.vue";
+
 export default {
   name: "Recipe",
   data() {
     return {
       user: store.currentUser,
-      ingredientes: [],
       name: "",
       category: "",
+      ingredientes: [],
       ingredient: "",
       quantity: "",
       measUnit: "",
@@ -104,7 +181,27 @@ export default {
     };
   },
   methods: {
-    numIngredientesMinus: function(ingridientes) {
+    deleteIngredient(broj) {
+      console.log(broj);
+      this.ingredientes.splice(broj, 1);
+    },
+    addIngredient() {
+      if (this.ingredient && this.quantity > 0 && this.measUnit) {
+        this.ingredientes.push({
+          ingredient: this.ingredient,
+          quantity: this.quantity,
+          measUnit: this.measUnit,
+        });
+        (this.ingredient = ""),
+          (this.quantity = ""),
+          (this.measUnit = ""),
+          console.log(this.ingredientes);
+      } else {
+        alert("Some data was not entered or is corrupted!!");
+      }
+    },
+
+    /* numIngredientesMinus: function(ingridientes) {
       this.ingredientes.splice(ingridientes, 1);
     },
     numIngredientesPlus: function(ingridientes) {
@@ -113,16 +210,8 @@ export default {
         quantity: this.quantity,
         measUnit: this.measUnit,
       });
-    },
+    },*/
     addRecipe() {
-      /* for (i in this.ingridientes) {
-        this.ingridientes[i].push(
-          this.ingridient,
-          this.quantity,
-          this.measUnit
-        );
-      }
-
       /*  const ingred = ingredientes.map((obj) => {
         return Object.assign({}, obj);
       });*/
@@ -134,25 +223,26 @@ export default {
           ingredientes: this.ingredientes,
           preparation: this.preparation,
           user: this.user,
-          dodano_u: Date.now(),
+          addedEt: Date.now(),
         })
         .then(() => {
-          console.log("Spremljeno");
+          alert("Data entered in base.");
           this.name = "";
           this.category = "";
           this.ingredient = "";
           this.quantity = "";
           this.measUnit = "";
           this.preparation = "";
+          this.ingredientes = [];
         })
-        .catch(function(e) {
-          console.error(e);
+        .catch((e) => {
+          alert("Error " + e);
         });
     },
   },
 
-  components: {
+  /* components: {
     ingredientCard,
-  },
+  },*/
 };
 </script>
