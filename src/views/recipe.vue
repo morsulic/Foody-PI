@@ -27,8 +27,16 @@
                 <option>Brunch</option>
                 <option>Lunch</option>
                 <option>Snack</option>
-                <option>Dinner</option>
-              </select>
+                <option>Dinner</option> </select
+              ><br />
+              <div class="form-group">
+                <croppa
+                  :width="200"
+                  :height="200"
+                  placeholder="Upload an image"
+                  v-model="imageReference"
+                ></croppa>
+              </div>
             </div>
             <div class="row">
               <div class="col-4">
@@ -162,7 +170,7 @@
   </div>
 </template>
 <script>
-import { db } from "@/firebase";
+import { db, storage } from "@/firebase";
 import store from "@/store";
 //import ingredientCard from "@/components/ingredientCard.vue";
 
@@ -178,6 +186,7 @@ export default {
       quantity: "",
       measUnit: "",
       preparation: "",
+      imageReference: null,
     };
   },
   methods: {
@@ -215,7 +224,24 @@ export default {
       /*  const ingred = ingredientes.map((obj) => {
         return Object.assign({}, obj);
       });*/
+      this.imageReference.generateBlob((blobData) => {
+        console.log(blobData);
 
+        let imageName = "recipes/" + this.user + "/" + Date.now() + ".png";
+        console.log(imageName);
+
+        storage
+          .ref(imageName)
+          .put(blobData)
+          .then((result) => {
+            result.ref.getDownloadURL().then((url) => {
+              console.log("Javni link", url);
+            });
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      });
       db.collection("recipe")
         .add({
           name: this.name,
