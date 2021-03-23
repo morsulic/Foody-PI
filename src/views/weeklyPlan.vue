@@ -6,299 +6,49 @@
         <div class="col-sm">
           <form class="login-form">
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool1)" for="monday">
+              <h2 @click.prevent="openClose(this.bool)" for="monday">
                 ˇMonday
               </h2>
-              <div class="dropdown" v-if="this.bool1 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <day-card></day-card>
             </div>
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool2)" for="tuesday">
+              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
                 ˇTuesday
               </h2>
-              <div class="dropdown" v-if="this.bool2 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <day-card></day-card>
             </div>
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool3)" for="tuesday">
+              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
                 ˇWednesday
               </h2>
-              <div class="dropdown" v-if="this.bool3 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <day-card></day-card>
             </div>
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool4)" for="tuesday">
+              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
                 ˇThursday
               </h2>
-              <div class="dropdown" v-if="this.bool4 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <day-card></day-card>
             </div>
             <div class="form-group">
-              <h2 @click.prevent="openClose(bool5)" for="tuesday">ˇFriday</h2>
-              <div class="dropdown" v-if="this.bool5 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
+                ˇFriday
+              </h2>
+              <day-card></day-card>
             </div>
             <div class="form-group">
               <h2
-                @click.prevent="this.bool6 = openClose(this.bool6)"
+                @click.prevent="this.bool = openClose(this.bool)"
                 for="tuesday"
               >
                 ˇSaturday
               </h2>
-              <div class="dropdown" v-if="this.bool6 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <day-card></day-card>
             </div>
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool7)" for="tuesday">
+              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
                 ˇSunday
               </h2>
-              <div class="dropdown" v-if="this.bool7 == true">
-                <label for="breakfast">Breakfast</label>
-                <input
-                  type="text"
-                  v-model="breakfast"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="brunch">Brunch</label>
-                <input
-                  type="text"
-                  v-model="brunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="lunch">Lunch</label>
-                <input
-                  type="text"
-                  v-model="lunch"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="snack">Snack</label>
-                <input
-                  type="text"
-                  v-model="snack"
-                  class="form-control"
-                  id="input1"
-                />
-                <label for="dinner">Dinner</label>
-                <input
-                  type="text"
-                  v-model="dinner"
-                  class="form-control"
-                  id="input1"
-                />
-              </div>
+              <day-card></day-card>
             </div>
             <button type="submit" class="btn btn-primary">
               Generate
@@ -313,19 +63,13 @@
 <script>
 import { db } from "@/firebase";
 import store from "@/store";
-
+import dayCard from "@/components/dayCard.vue";
 export default {
   name: "Recipe",
 
   data() {
     return {
-      bool1: false,
-      bool2: false,
-      bool3: false,
-      bool4: false,
-      bool5: false,
-      bool6: false,
-      bool7: false,
+      bool: false,
       breakfast: "",
       brunch: "",
       lunch: "",
@@ -335,12 +79,15 @@ export default {
   },
   methods: {
     openClose(bool) {
-      if (bool == false) {
+      if (this.bool == false) {
         return true;
       } else {
         return false;
       }
     },
+  },
+  components: {
+    dayCard,
   },
 };
 </script>
