@@ -70,7 +70,7 @@ form.menu-form {
   margin: 50px auto 0 auto;
   padding: 25px 15px;
   text-align: center;
-  width: 100%;
+  width: 375px;
 }
 
 button.first {

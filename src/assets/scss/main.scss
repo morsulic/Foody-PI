@@ -2,31 +2,33 @@
 $green: #9bcb3b;
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400, 700");
 
-* { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
 
-
-body { 
+body {
   background-color: #fff;
 }
 
-h1 { 
-  font-size: 45px; 
+h1 {
+  font-size: 45px;
   font-weight: normal;
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   margin-bottom: 20px;
   font-family: Georgia, serif;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-h2 { 
-  font-size: 15px; 
+h2 {
+  font-size: 15px;
   font-weight: normal;
-  margin: 0; 
-  padding: 10px 35px; 
+  margin: 0;
+  padding: 10px 35px;
   margin-bottom: 20px;
   font-weight: bold;
   text-align: left;
@@ -45,7 +47,7 @@ a {
   color: #8bc34a;
 
   &.router-link-exact-active {
-    color:#8bc34a;
+    color: #8bc34a;
   }
 }
 
@@ -66,14 +68,15 @@ form.login-form {
 }
 
 label {
-  display:block; 
-  width:100%;
-  text-align:left;
+  display: block;
+  width: 100%;
+  text-align: left;
   padding: 0px 36px;
-  font-size: 12px;  
+  font-size: 12px;
 }
 
-input, button {
+input,
+button {
   border-radius: 3px;
 }
 
@@ -105,7 +108,7 @@ button {
     background-color: darken($green, 10%) !important;
     cursor: pointer;
   }
-  &:active { 
+  &:active {
     background-color: darken($green, 20%) !important;
   }
   &[disabled] {
@@ -115,8 +118,10 @@ button {
   }
 }
 
-@media (min-width:768px) {
-  body { background-color: #dadbdd; }
+@media (min-width: 768px) {
+  body {
+    background-color: #dadbdd;
+  }
   form.login-form {
     margin-top: 50px;
     width: 375px;

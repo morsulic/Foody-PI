@@ -4,7 +4,15 @@
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-          <form @submit.prevent="addRecipe">
+          <form class="login-form" @submit.prevent="addRecipe">
+            <h1 style="font-size: 20px;">
+              <span style="color: #000">F</span>
+              <span style="color: #FF7043">oo</span>
+              <span style="color: #000">dy</span>
+            </h1>
+
+            <h2>Recipe</h2>
+            <hr />
             <div class="form-group">
               <label for="name">Name</label>
               <input
@@ -31,15 +39,15 @@
               ><br />
               <div class="form-group">
                 <croppa
-                  :width="200"
-                  :height="200"
+                  :width="150"
+                  :height="150"
                   placeholder="Upload an image"
                   v-model="imageReference"
                 ></croppa>
               </div>
             </div>
             <div class="row">
-              <div class="col-4">
+              <div class="col-5">
                 <div class="form-group">
                   <label for="ingredient">Ingredient</label>
                   <input
@@ -91,15 +99,6 @@
             </div>
             <div class="form-group">
               <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Ingredient</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Meas unit</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
                 <tbody v-for="(ing, i) in ingredientes" :key="i">
                   <tr>
                     <th scope="row">{{ i + 1 }}</th>
@@ -272,3 +271,42 @@ export default {
   },*/
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/scss/main.scss";
+
+hr {
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  border-width: 7px;
+  width: 100%;
+  color: #9bcb3b;
+}
+
+select {
+  margin: auto;
+  width: 80% !important;
+  height: 35px !important;
+}
+
+h2 {
+  text-align: center;
+}
+
+button {
+  border-radius: 5px;
+  padding: 0.3em;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  width: 80% !important;
+}
+</style>
