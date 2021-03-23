@@ -2,8 +2,9 @@
   <div class="card text-left">
     <div class="card-body p-0">
       <label for="breakfast">breakfast: </label>
+      {{ breakfast }}
       <input
-        v-model="store.searchTerm"
+        v-model="breakfast0"
         class="form-control mr-sm-2"
         id="pretraga"
         type="search"
@@ -53,7 +54,7 @@
 <script>
 import store from "@/store";
 export default {
-  props: ["info"],
+  props: ["breakfast"],
   name: "DayCard",
   data() {
     return {
