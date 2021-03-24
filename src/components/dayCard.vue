@@ -2,62 +2,92 @@
   <div class="card text-left">
     <div class="card-body p-0">
       <label for="breakfast">breakfast: </label>
-      {{ breakfast }}
-      <input
-        v-model="breakfast0"
+      {{ day }}
+      <select
+        v-model="breakfast1[day]"
+        class="form-control mr-sm-2"
+        id="pretraga"
+        type="search"
+        placeholder="breakfast[0].name"
+        aria-label="Search"
+      >
+        <dropdown-card
+          v-for="breakfast in breakfast"
+          :key="breakfast.id"
+          :info="breakfast"
+        />
+      </select>
+
+      <label for="brunch">brunch: </label>
+      <select
+        v-model="brunch1[day]"
         class="form-control mr-sm-2"
         id="pretraga"
         type="search"
         placeholder="Search..."
         aria-label="Search"
-      />
-      <label for="snack">snack: </label>
-      <input
-        v-model="store.searchTerm"
-        class="form-control mr-sm-2"
-        id="pretraga"
-        type="search"
-        placeholder="Search..."
-        aria-label="Search"
-      />
+      >
+        <dropdown-card
+          v-for="brunch in brunch"
+          :key="brunch.id"
+          :info="brunch"
+        />
+      </select>
       <label for="lunch">lunch: </label>
-      <input
-        v-model="store.searchTerm"
+      <select
+        v-model="lunch1[day]"
         class="form-control mr-sm-2"
         id="pretraga"
         type="search"
         placeholder="Search..."
         aria-label="Search"
-      />
+      >
+        <dropdown-card v-for="lunch in lunch" :key="lunch.id" :info="lunch" />
+      </select>
       <label for="snack">snack: </label>
-      <input
-        v-model="store.searchTerm"
+      <select
+        v-model="snack1[day]"
         class="form-control mr-sm-2"
         id="pretraga"
         type="search"
         placeholder="Search..."
         aria-label="Search"
-      />
+      >
+        <dropdown-card v-for="snack in snack" :key="snack.id" :info="snack" />
+      </select>
       <label for="dinner">dinner: </label>
-      <input
-        v-model="store.searchTerm"
+      <select
+        v-model="dinner1[day]"
         class="form-control mr-sm-2"
         id="pretraga"
         type="search"
         placeholder="Search..."
         aria-label="Search"
-      />
+      >
+        <dropdown-card
+          v-for="dinner in dinner"
+          :key="dinner.id"
+          :info="dinner"
+        />
+      </select>
     </div>
   </div>
 </template>
 
 <script>
 import store from "@/store";
+import dropdownCard from "./dropdownCard.vue";
 export default {
-  props: ["breakfast"],
+  components: { dropdownCard },
+  props: ["breakfast", "brunch", "lunch", "snack", "dinner", "day"],
   name: "DayCard",
   data() {
     return {
+      breakfast1: [],
+      brunch1: [],
+      lunch1: [],
+      snack1: [],
+      dinner1: [],
       store,
     };
   },

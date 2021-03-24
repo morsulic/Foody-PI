@@ -6,7 +6,7 @@
         <div class="col-sm">
           <form class="login-form">
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool)" for="monday">
+              <h2 v-on:click.prevent="openClose(this.bool)" for="monday">
                 ˇMonday
               </h2>
               <day-card
@@ -15,6 +15,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="1"
                 class="card"
               />
             </div>
@@ -28,6 +29,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="2"
                 class="card"
               />
             </div>
@@ -41,6 +43,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="3"
                 class="card"
               />
             </div>
@@ -54,6 +57,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="4"
                 class="card"
               />
             </div>
@@ -67,14 +71,12 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="5"
                 class="card"
               />
             </div>
             <div class="form-group">
-              <h2
-                @click.prevent="this.bool = openClose(this.bool)"
-                for="tuesday"
-              >
+              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
                 ˇSaturday
               </h2>
               <day-card
@@ -83,11 +85,12 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="6"
                 class="card"
               />
             </div>
             <div class="form-group">
-              <h2 @click.prevent="openClose(this.bool)" for="tuesday">
+              <h2 @click.prevent="openClose(bool)" for="tuesday">
                 ˇSunday
               </h2>
               <day-card
@@ -96,6 +99,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
+                :day="7"
                 class="card"
               />
             </div>
@@ -136,7 +140,7 @@ export default {
   },
   methods: {
     openClose(bool) {
-      if (this.bool == false) {
+      if (bool == false) {
         return true;
       } else {
         return false;
@@ -197,11 +201,10 @@ export default {
         .where("category", "==", "Snack")
         .get()
         .then((query) => {
-          this.snack = []; // ime liste koju koristimo
+          this.snack = [];
           query.forEach((doc) => {
             const data = doc.data();
             this.snack.push({
-              // promjeni ime u pravu listi !!
               id: doc.id,
               name: data.name,
             });
