@@ -6,7 +6,7 @@
         <div class="col-sm">
           <form class="login-form">
             <div class="form-group">
-              <h2 @click="isShowing" for="monday">
+              <h2 @click.prevent="isShowing0 ^= true" for="monday">
                 ˇ Monday
               </h2>
               <day-card
@@ -17,11 +17,11 @@
                 :dinner="dinner"
                 :day="1"
                 class="card"
-                v-if="isShowing"
+                v-show="isShowing0"
               />
             </div>
             <div class="form-group">
-              <h2 @click="isShowing ^= true" for="tuesday">
+              <h2 @click.prevent="isShowing1 ^= true" for="tuesday">
                 ˇ Tuesday
               </h2>
               <day-card
@@ -32,11 +32,11 @@
                 :dinner="dinner"
                 :day="2"
                 class="card"
-                v-show="isShowing"
+                v-show="isShowing1"
               />
             </div>
             <div class="form-group">
-              <h2 @click="isShowing ^= true" for="wednesday">
+              <h2 @click.prevent="isShowing2 ^= true" for="wednesday">
                 ˇ Wednesday
               </h2>
               <day-card
@@ -47,11 +47,11 @@
                 :dinner="dinner"
                 :day="3"
                 class="card"
-                v-show="isShowing"
+                v-show="isShowing2"
               />
             </div>
             <div class="form-group">
-              <h2 @click="isShowing ^= true" for="thursday">
+              <h2 @click.prevent="isShowing3 ^= true" for="thursday">
                 ˇ Thursday
               </h2>
               <day-card
@@ -61,11 +61,11 @@
                 :snack="snack"
                 :dinner="dinner"
                 :day="4"
-                v-show="isShowing"
+                v-show="isShowing3"
               />
             </div>
             <div class="form-group">
-              <h2 @click="isShowing ^= true" for="friday">
+              <h2 @click.prevent="isShowing4 ^= true" for="friday">
                 ˇ Friday
               </h2>
               <day-card
@@ -76,11 +76,11 @@
                 :dinner="dinner"
                 :day="5"
                 class="card"
-                v-show="isShowing"
+                v-show="isShowing4"
               />
             </div>
             <div class="form-group">
-              <h2 @click="isShowing ^= true" for="saturday">
+              <h2 @click.prevent="isShowing5 ^= true" for="saturday">
                 ˇ Saturday
               </h2>
               <day-card
@@ -91,11 +91,11 @@
                 :dinner="dinner"
                 :day="6"
                 class="card"
-                v-show="isShowing"
+                v-show="isShowing5"
               />
             </div>
             <div class="form-group">
-              <h2 @click="isShowing ^= true" for="sunday">
+              <h2 @click.prevent="isShowing6 ^= true" for="sunday">
                 ˇ Sunday
               </h2>
               <day-card
@@ -106,7 +106,7 @@
                 :dinner="dinner"
                 :day="7"
                 class="card"
-                v-show="isShowing"
+                v-show="isShowing6"
               />
             </div>
             <button type="submit" class="btn btn-primary">
@@ -134,7 +134,13 @@ export default {
       lunch: [],
       snack: [],
       dinner: [],
-      isShowing: false,
+      isShowing0: false,
+      isShowing1: false,
+      isShowing2: false,
+      isShowing3: false,
+      isShowing4: false,
+      isShowing5: false,
+      isShowing6: false,
     };
   },
   mounted() {
@@ -147,6 +153,7 @@ export default {
   },
   methods: {
     openClose(bool) {
+      console.log(bool);
       if (bool == false) {
         return true;
       } else {
