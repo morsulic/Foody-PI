@@ -1,10 +1,11 @@
 <template>
   <div class="card text-left">
     <div class="card-body p-0">
-      <label for="breakfast">proba: </label>
+      {{ day }}
+      <label for="breakfast">breakfast: </label>
       <div class="dropdown" id="dropdown">
         <input
-          v-model.trim="inputValue"
+          v-model.trim="inputValue[0]"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -13,87 +14,102 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card></dropdown-card>
         </div>
-        <div class="dropdown-list">
-          <dropdown-card
-            v-for="breakfast in breakfast"
-            :key="breakfast.id"
-            :info="breakfast"
-            class="dropdown-item"
-            v-show="itemVisible(breakfast)"
-            @click="selectItem(breakfast)"
-          />
-        </div>
-      </div>
-
-      <label for="breakfast">breakfast: </label>
-      {{ day }}
-      <select
-        v-model="breakfast1[day]"
-        class="form-control mr-sm-2"
-        id="pretraga"
-        type="search"
-        placeholder="breakfast[0].name"
-        aria-label="Search"
-      >
         <dropdown-card
           v-for="breakfast in breakfast"
           :key="breakfast.id"
           :info="breakfast"
+          class="dropdown-item"
+          v-show="
+            inputValue[0].toString().length > 0 && itemVisible(breakfast, 0)
+          "
+          @click="selectItem(breakfast, 0)"
         />
-      </select>
+      </div>
 
       <label for="brunch">brunch: </label>
-      <select
-        v-model="brunch1[day]"
-        class="form-control mr-sm-2"
-        id="pretraga"
-        type="search"
-        placeholder="Search..."
-        aria-label="Search"
-      >
+      <div class="dropdown" id="dropdown">
+        <input
+          v-model.trim="inputValue[1]"
+          class="dropdown-input"
+          type="text"
+          placeholder="Search..."
+          v-if="Object.keys(selectedItem).length === 0"
+        />
+        <div v-else @click="resetSelection" class="dropdown-selected">
+          <dropdown-card></dropdown-card>
+        </div>
         <dropdown-card
           v-for="brunch in brunch"
           :key="brunch.id"
           :info="brunch"
+          class="dropdown-item"
+          v-show="inputValue[1].toString().length > 0 && itemVisible(brunch, 1)"
+          @click="selectItem(brunch, 1)"
         />
-      </select>
+      </div>
       <label for="lunch">lunch: </label>
-      <select
-        v-model="lunch1[day]"
-        class="form-control mr-sm-2"
-        id="pretraga"
-        type="search"
-        placeholder="Search..."
-        aria-label="Search"
-      >
-        <dropdown-card v-for="lunch in lunch" :key="lunch.id" :info="lunch" />
-      </select>
+      <div class="dropdown" id="dropdown">
+        <input
+          v-model.trim="inputValue[2]"
+          class="dropdown-input"
+          type="text"
+          placeholder="Search..."
+          v-if="Object.keys(selectedItem).length === 0"
+        />
+        <div v-else @click="resetSelection" class="dropdown-selected">
+          <dropdown-card></dropdown-card>
+        </div>
+        <dropdown-card
+          v-for="lunch in lunch"
+          :key="lunch.id"
+          :info="lunch"
+          class="dropdown-item"
+          v-show="inputValue[2].toString().length > 0 && itemVisible(lunch, 2)"
+          @click="selectItem(lunch, 2)"
+        />
+      </div>
       <label for="snack">snack: </label>
-      <select
-        v-model="snack1[day]"
-        class="form-control mr-sm-2"
-        id="pretraga"
-        type="search"
-        placeholder="Search..."
-        aria-label="Search"
-      >
-        <dropdown-card v-for="snack in snack" :key="snack.id" :info="snack" />
-      </select>
+      <div class="dropdown" id="dropdown">
+        <input
+          v-model.trim="inputValue[3]"
+          class="dropdown-input"
+          type="text"
+          placeholder="Search..."
+          v-if="Object.keys(selectedItem).length === 0"
+        />
+        <div v-else @click="resetSelection" class="dropdown-selected">
+          <dropdown-card></dropdown-card>
+        </div>
+        <dropdown-card
+          v-for="snack in snack"
+          :key="snack.id"
+          :info="snack"
+          class="dropdown-item"
+          v-show="inputValue[3].toString().length > 0 && itemVisible(snack, 3)"
+          @click="selectItem(snack, 3)"
+        />
+      </div>
       <label for="dinner">dinner: </label>
-      <select
-        v-model="dinner1[day]"
-        class="form-control mr-sm-2"
-        id="pretraga"
-        type="search"
-        placeholder="Search..."
-        aria-label="Search"
-      >
+      <div class="dropdown" id="dropdown">
+        <input
+          v-model.trim="inputValue[4]"
+          class="dropdown-input"
+          type="text"
+          placeholder="Search..."
+          v-if="Object.keys(selectedItem).length === 0"
+        />
+        <div v-else @click="resetSelection" class="dropdown-selected">
+          <dropdown-card></dropdown-card>
+        </div>
         <dropdown-card
           v-for="dinner in dinner"
           :key="dinner.id"
           :info="dinner"
+          class="dropdown-item"
+          v-show="inputValue[4].toString().length > 0 && itemVisible(dinner, 4)"
+          @click="selectItem(dinner, 4)"
         />
-      </select>
+      </div>
     </div>
   </div>
 </template>
@@ -107,7 +123,7 @@ export default {
   name: "DayCard",
   data() {
     return {
-      inputValue: "",
+      inputValue: ["", "", "", "", ""],
       selectedItem: {},
       breakfast1: [],
       brunch1: [],
@@ -119,14 +135,15 @@ export default {
     };
   },
   methods: {
-    itemVisible(item) {
+    stringElement(item) {},
+    itemVisible(item, i) {
       let currentName = item.name.toLowerCase();
-      let currentInput = this.inputValue.toLowerCase();
+      let currentInput = this.inputValue[i].toLowerCase();
       return currentName.includes(currentInput);
     },
-    selectItem(theItem) {
+    selectItem(theItem, i) {
       this.selectedItem = theItem;
-      this.inputValue = "";
+      this.inputValue[i] = "";
       this.$emit("on-item-selected", theItem);
     },
     resetItem() {
