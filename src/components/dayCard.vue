@@ -1,6 +1,30 @@
 <template>
   <div class="card text-left">
     <div class="card-body p-0">
+      <label for="breakfast">proba: </label>
+      <div class="dropdown" id="dropdown">
+        <input
+          v-model.trim="inputValue"
+          class="dropdown-input"
+          type="text"
+          placeholder="Search..."
+          v-if="Object.keys(selectedItem).length === 0"
+        />
+        <div v-else @click="resetSelection" class="dropdown-selected">
+          <dropdown-card></dropdown-card>
+        </div>
+        <div class="dropdown-list">
+          <dropdown-card
+            v-for="breakfast in breakfast"
+            :key="breakfast.id"
+            :info="breakfast"
+            class="dropdown-item"
+            v-show="itemVisible(breakfast)"
+            @click="selectItem(breakfast)"
+          />
+        </div>
+      </div>
+
       <label for="breakfast">breakfast: </label>
       {{ day }}
       <select
@@ -83,13 +107,33 @@ export default {
   name: "DayCard",
   data() {
     return {
+      inputValue: "",
+      selectedItem: {},
       breakfast1: [],
       brunch1: [],
       lunch1: [],
       snack1: [],
       dinner1: [],
       store,
+      listLoaded: true,
     };
+  },
+  methods: {
+    itemVisible(item) {
+      let currentName = item.name.toLowerCase();
+      let currentInput = this.inputValue.toLowerCase();
+      return currentName.includes(currentInput);
+    },
+    selectItem(theItem) {
+      this.selectedItem = theItem;
+      this.inputValue = "";
+      this.$emit("on-item-selected", theItem);
+    },
+    resetItem() {
+      this.selectedItem = {};
+      this.$nextTick(() => this.$refs.dropdowninput.focus());
+      this.$emit("on-item-reset");
+    },
   },
 };
 </script>
@@ -120,5 +164,32 @@ export default {
     border-radius: 5px;
     border: 1px solid #c4c4c4;
   }
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+.dropdown-list {
+  display: absolute;
+  position: relative;
+  padding: 10px 16px;
+}
+.dropdown-input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  background: #edf2f7;
+  line-height: 1.5em;
+  outline: none;
+  border-radius: 8px;
+}
+.dropdown-input:focus {
+  background: #fff;
+  border-color: #e2e8f0;
+}
+.dropdown-input::placeholder {
+  opacity: 0.7;
 }
 </style>
