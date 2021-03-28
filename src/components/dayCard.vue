@@ -12,9 +12,6 @@
           placeholder="Search..."
           v-if="Object.keys(selectedItem).length === 0"
         />
-        <div v-else @click="resetSelection" class="dropdown-selected">
-          <dropdown-card> </dropdown-card>
-        </div>
         <datalist id="breakfastList">
           <dropdown-card
             v-for="breakfast in breakfast"
@@ -24,7 +21,10 @@
             v-show="
               inputValue[0].toString().length > 0 && itemVisible(breakfast, 0)
             "
-            @click="selectItem(breakfast, 0)"
+            @click="
+              selectItem(breakfast, 0);
+              inputList(day, inputValue);
+            "
           />
         </datalist>
       </div>
@@ -39,9 +39,6 @@
           placeholder="Search..."
           v-if="Object.keys(selectedItem).length === 0"
         />
-        <div v-else @click="resetSelection" class="dropdown-selected">
-          <dropdown-card></dropdown-card>
-        </div>
         <datalist id="brunchList">
           <dropdown-card
             v-for="brunch in brunch"
@@ -51,7 +48,10 @@
             v-show="
               inputValue[1].toString().length > 0 && itemVisible(brunch, 1)
             "
-            @click="selectItem(brunch, 1)"
+            @click="
+              selectItem(brunch, 1);
+              inputList(day, inputValue);
+            "
           />
         </datalist>
       </div>
@@ -65,9 +65,6 @@
           placeholder="Search..."
           v-if="Object.keys(selectedItem).length === 0"
         />
-        <div v-else @click="resetSelection" class="dropdown-selected">
-          <dropdown-card></dropdown-card>
-        </div>
         <datalist id="lunchList">
           <dropdown-card
             v-for="lunch in lunch"
@@ -77,7 +74,10 @@
             v-show="
               inputValue[2].toString().length > 0 && itemVisible(lunch, 2)
             "
-            @click="selectItem(lunch, 2)"
+            @click="
+              selectItem(lunch, 2);
+              inputList(day, inputValue);
+            "
           />
         </datalist>
       </div>
@@ -91,9 +91,6 @@
           placeholder="Search..."
           v-if="Object.keys(selectedItem).length === 0"
         />
-        <div v-else @click="resetSelection" class="dropdown-selected">
-          <dropdown-card></dropdown-card>
-        </div>
         <datalist id="snackList">
           <dropdown-card
             v-for="snack in snack"
@@ -103,7 +100,10 @@
             v-show="
               inputValue[3].toString().length > 0 && itemVisible(snack, 3)
             "
-            @click="selectItem(snack, 3)"
+            @click="
+              selectItem(snack, 3);
+              inputList(day, inputValue);
+            "
           />
         </datalist>
       </div>
@@ -117,9 +117,6 @@
           placeholder="Search..."
           v-if="Object.keys(selectedItem).length === 0"
         />
-        <div v-else @click="resetSelection" class="dropdown-selected">
-          <dropdown-card></dropdown-card>
-        </div>
         <datalist id="dinnerList">
           <dropdown-card
             v-for="dinner in dinner"
@@ -129,7 +126,10 @@
             v-show="
               inputValue[4].toString().length > 0 && itemVisible(dinner, 4)
             "
-            @click="selectItem(dinner, 4)"
+            @click="
+              selectItem(dinner, 4);
+              inputList(day, inputValue);
+            "
           />
         </datalist>
       </div>
@@ -158,7 +158,37 @@ export default {
     };
   },
   methods: {
-    stringElement(item) {},
+    inputList(day, inputValue) {
+      if (day == 1) {
+        for (i in inputValue) {
+          store.monday[i] = inputValue[i];
+        }
+      } else if (day == 2) {
+        for (i in inputValue) {
+          store.tuesday[i] = inputValue[i];
+        }
+      } else if (day == 3) {
+        for (i in inputValue) {
+          store.wednesday[i] = inputValue[i];
+        }
+      } else if (day == 4) {
+        for (i in inputValue) {
+          store.thursday[i] = inputValue[i];
+        }
+      } else if (day == 5) {
+        for (i in inputValue) {
+          store.friday[i] = inputValue[i];
+        }
+      } else if (day == 6) {
+        for (i in inputValue) {
+          store.saturday[i] = inputValue[i];
+        }
+      } else {
+        for (i in inputValue) {
+          store.sunday[i] = inputValue[i];
+        }
+      }
+    },
     itemVisible(item, i) {
       let currentName = item.name.toLowerCase();
       let currentInput = this.inputValue[i].toLowerCase();

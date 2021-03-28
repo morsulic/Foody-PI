@@ -1,6 +1,12 @@
 export default{
 
     currentUser: '',
-    searchTerm: '',
+    monday: [],
+    tuesday: [],
+    wednesday:[],
+    thursday:[],
+    friday:[],
+    saturday:[],
+    sunday:[],
 
 };

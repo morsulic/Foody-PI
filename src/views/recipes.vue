@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
-      <h2 class="recipe">Recept</h2>
+      <h2 class="recipe">Recipe</h2>
       <recipe-card
         v-for="breakfast in breakfast"
         :key="breakfast.id"
@@ -32,8 +32,11 @@ export default {
     };
   },
   mounted() {
-    this.getPosts;
-    this.getPosts1;
+    this.getBreakfast;
+    this.getBrunch;
+    this.getLunch;
+    this.getSnack;
+    this.getDinner;
   },
   computed: {
     getBreakfast() {
@@ -47,6 +50,10 @@ export default {
             this.breakfast.push({
               id: doc.id,
               name: data.name,
+              addedEt: data.addedEt,
+              category: data.category,
+              ingredientes: data.ingredientes,
+              preparation: data.preparation,
             });
           });
         });
@@ -63,6 +70,10 @@ export default {
             this.brunch.push({
               id: doc.id,
               name: data.name,
+              addedEt: data.addedEt,
+              category: data.category,
+              ingredientes: data.ingredientes,
+              preparation: data.preparation,
             });
           });
         });
@@ -79,6 +90,10 @@ export default {
             this.lunch.push({
               id: doc.id,
               name: data.name,
+              addedEt: data.addedEt,
+              category: data.category,
+              ingredientes: data.ingredientes,
+              preparation: data.preparation,
             });
           });
         });
@@ -95,6 +110,10 @@ export default {
             this.snack.push({
               id: doc.id,
               name: data.name,
+              addedEt: data.addedEt,
+              category: data.category,
+              ingredientes: data.ingredientes,
+              preparation: data.preparation,
             });
           });
         });
@@ -111,6 +130,10 @@ export default {
             this.dinner.push({
               id: doc.id,
               name: data.name,
+              addedEt: data.addedEt,
+              category: data.category,
+              ingredientes: data.ingredientes,
+              preparation: data.preparation,
             });
           });
         });
