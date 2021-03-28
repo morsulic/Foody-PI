@@ -6,30 +6,34 @@
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[0]"
+          list="bf"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
           v-if="Object.keys(selectedItem).length === 0"
         />
         <div v-else @click="resetSelection" class="dropdown-selected">
-          <dropdown-card></dropdown-card>
+          <dropdown-card> </dropdown-card>
         </div>
-        <dropdown-card
-          v-for="breakfast in breakfast"
-          :key="breakfast.id"
-          :info="breakfast"
-          class="dropdown-item"
-          v-show="
-            inputValue[0].toString().length > 0 && itemVisible(breakfast, 0)
-          "
-          @click="selectItem(breakfast, 0)"
-        />
+        <datalist id="bf">
+          <dropdown-card
+            v-for="breakfast in breakfast"
+            :key="breakfast.id"
+            :info="breakfast"
+            class="dropdown-item"
+            v-show="
+              inputValue[0].toString().length > 0 && itemVisible(breakfast, 0)
+            "
+            @click="selectItem(breakfast, 0)"
+          />
+        </datalist>
       </div>
 
       <label for="brunch">brunch: </label>
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[1]"
+          list="bru"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -38,14 +42,18 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card></dropdown-card>
         </div>
-        <dropdown-card
-          v-for="brunch in brunch"
-          :key="brunch.id"
-          :info="brunch"
-          class="dropdown-item"
-          v-show="inputValue[1].toString().length > 0 && itemVisible(brunch, 1)"
-          @click="selectItem(brunch, 1)"
-        />
+        <datalist id="bru">
+          <dropdown-card
+            v-for="brunch in brunch"
+            :key="brunch.id"
+            :info="brunch"
+            class="dropdown-item"
+            v-show="
+              inputValue[1].toString().length > 0 && itemVisible(brunch, 1)
+            "
+            @click="selectItem(brunch, 1)"
+          />
+        </datalist>
       </div>
       <label for="lunch">lunch: </label>
       <div class="dropdown" id="dropdown">
@@ -179,7 +187,7 @@ export default {
     margin: 0;
     padding: 14px;
     border-radius: 5px;
-    border: 1px solid #c4c4c4;
+    border: 0px solid #c4c4c4;
   }
 }
 

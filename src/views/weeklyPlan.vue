@@ -128,6 +128,7 @@ export default {
 
   data() {
     return {
+      bool: false,
       breakfast: [],
       brunch: [],
       lunch: [],

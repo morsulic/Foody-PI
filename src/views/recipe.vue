@@ -41,7 +41,6 @@
                 <croppa
                   :width="150"
                   :height="150"
-                  placeholder="Upload an image"
                   v-model="imageReference"
                 ></croppa>
               </div>
