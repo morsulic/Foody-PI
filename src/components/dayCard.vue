@@ -6,7 +6,7 @@
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[0]"
-          list="bf"
+          list="breakfastList"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -15,7 +15,7 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card> </dropdown-card>
         </div>
-        <datalist id="bf">
+        <datalist id="breakfastList">
           <dropdown-card
             v-for="breakfast in breakfast"
             :key="breakfast.id"
@@ -33,7 +33,7 @@
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[1]"
-          list="bru"
+          list="brunchList"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -42,7 +42,7 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card></dropdown-card>
         </div>
-        <datalist id="bru">
+        <datalist id="brunchList">
           <dropdown-card
             v-for="brunch in brunch"
             :key="brunch.id"
@@ -59,6 +59,7 @@
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[2]"
+          list="lunchList"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -67,19 +68,24 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card></dropdown-card>
         </div>
-        <dropdown-card
-          v-for="lunch in lunch"
-          :key="lunch.id"
-          :info="lunch"
-          class="dropdown-item"
-          v-show="inputValue[2].toString().length > 0 && itemVisible(lunch, 2)"
-          @click="selectItem(lunch, 2)"
-        />
+        <datalist id="lunchList">
+          <dropdown-card
+            v-for="lunch in lunch"
+            :key="lunch.id"
+            :info="lunch"
+            class="dropdown-item"
+            v-show="
+              inputValue[2].toString().length > 0 && itemVisible(lunch, 2)
+            "
+            @click="selectItem(lunch, 2)"
+          />
+        </datalist>
       </div>
       <label for="snack">snack: </label>
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[3]"
+          list="snackList"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -88,19 +94,24 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card></dropdown-card>
         </div>
-        <dropdown-card
-          v-for="snack in snack"
-          :key="snack.id"
-          :info="snack"
-          class="dropdown-item"
-          v-show="inputValue[3].toString().length > 0 && itemVisible(snack, 3)"
-          @click="selectItem(snack, 3)"
-        />
+        <datalist id="snackList">
+          <dropdown-card
+            v-for="snack in snack"
+            :key="snack.id"
+            :info="snack"
+            class="dropdown-item"
+            v-show="
+              inputValue[3].toString().length > 0 && itemVisible(snack, 3)
+            "
+            @click="selectItem(snack, 3)"
+          />
+        </datalist>
       </div>
       <label for="dinner">dinner: </label>
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[4]"
+          list="dinnerList"
           class="dropdown-input"
           type="text"
           placeholder="Search..."
@@ -109,14 +120,18 @@
         <div v-else @click="resetSelection" class="dropdown-selected">
           <dropdown-card></dropdown-card>
         </div>
-        <dropdown-card
-          v-for="dinner in dinner"
-          :key="dinner.id"
-          :info="dinner"
-          class="dropdown-item"
-          v-show="inputValue[4].toString().length > 0 && itemVisible(dinner, 4)"
-          @click="selectItem(dinner, 4)"
-        />
+        <datalist id="dinnerList">
+          <dropdown-card
+            v-for="dinner in dinner"
+            :key="dinner.id"
+            :info="dinner"
+            class="dropdown-item"
+            v-show="
+              inputValue[4].toString().length > 0 && itemVisible(dinner, 4)
+            "
+            @click="selectItem(dinner, 4)"
+          />
+        </datalist>
       </div>
     </div>
   </div>
