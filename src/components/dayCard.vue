@@ -21,10 +21,6 @@
             v-show="
               inputValue[0].toString().length > 0 && itemVisible(breakfast, 0)
             "
-            @click="
-              selectItem(breakfast, 0);
-              inputList(day, inputValue);
-            "
           />
         </datalist>
       </div>
@@ -48,10 +44,6 @@
             v-show="
               inputValue[1].toString().length > 0 && itemVisible(brunch, 1)
             "
-            @click="
-              selectItem(brunch, 1);
-              inputList(day, inputValue);
-            "
           />
         </datalist>
       </div>
@@ -73,10 +65,6 @@
             class="dropdown-item"
             v-show="
               inputValue[2].toString().length > 0 && itemVisible(lunch, 2)
-            "
-            @click="
-              selectItem(lunch, 2);
-              inputList(day, inputValue);
             "
           />
         </datalist>
@@ -100,10 +88,6 @@
             v-show="
               inputValue[3].toString().length > 0 && itemVisible(snack, 3)
             "
-            @click="
-              selectItem(snack, 3);
-              inputList(day, inputValue);
-            "
           />
         </datalist>
       </div>
@@ -125,10 +109,6 @@
             class="dropdown-item"
             v-show="
               inputValue[4].toString().length > 0 && itemVisible(dinner, 4)
-            "
-            @click="
-              selectItem(dinner, 4);
-              inputList(day, inputValue);
             "
           />
         </datalist>
@@ -158,51 +138,39 @@ export default {
     };
   },
   methods: {
-    inputList(day, inputValue) {
-      if (day == 1) {
-        for (i in inputValue) {
-          store.monday[i] = inputValue[i];
-        }
-      } else if (day == 2) {
-        for (i in inputValue) {
-          store.tuesday[i] = inputValue[i];
-        }
-      } else if (day == 3) {
-        for (i in inputValue) {
-          store.wednesday[i] = inputValue[i];
-        }
-      } else if (day == 4) {
-        for (i in inputValue) {
-          store.thursday[i] = inputValue[i];
-        }
-      } else if (day == 5) {
-        for (i in inputValue) {
-          store.friday[i] = inputValue[i];
-        }
-      } else if (day == 6) {
-        for (i in inputValue) {
-          store.saturday[i] = inputValue[i];
-        }
-      } else {
-        for (i in inputValue) {
-          store.sunday[i] = inputValue[i];
-        }
-      }
-    },
     itemVisible(item, i) {
       let currentName = item.name.toLowerCase();
+      if (this.day == 0) {
+        store.monday[i] = this.inputValue[i];
+        console.log(store.monday[i]);
+      }
+      if (this.day == 1) {
+        store.tuesday[i] = this.inputValue[i];
+        console.log(store.tuesday[i]);
+      }
+      if (this.day == 2) {
+        store.wednesday[i] = this.inputValue[i];
+        console.log(store.wednesday[i]);
+      }
+      if (this.day == 3) {
+        store.thursday[i] = this.inputValue[i];
+        console.log(store.thursday[i]);
+      }
+      if (this.day == 4) {
+        store.friday[i] = this.inputValue[i];
+        console.log(store.friday[i]);
+      }
+      if (this.day == 5) {
+        store.saturday[i] = this.inputValue[i];
+        console.log(store.saturday[i]);
+      }
+      if (this.day == 6) {
+        store.sunday[i] = this.inputValue[i];
+        console.log(store.sunday[i]);
+      }
+
       let currentInput = this.inputValue[i].toLowerCase();
       return currentName.includes(currentInput);
-    },
-    selectItem(theItem, i) {
-      this.selectedItem = theItem;
-      this.inputValue[i] = "";
-      this.$emit("on-item-selected", theItem);
-    },
-    resetItem() {
-      this.selectedItem = {};
-      this.$nextTick(() => this.$refs.dropdowninput.focus());
-      this.$emit("on-item-reset");
     },
   },
 };

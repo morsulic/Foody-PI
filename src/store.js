@@ -1,12 +1,13 @@
 export default{
 
     currentUser: '',
-    monday: [],
-    tuesday: [],
-    wednesday:[],
-    thursday:[],
-    friday:[],
-    saturday:[],
-    sunday:[],
+    monday: ["","","","",""],
+    tuesday: ["","","","",""],
+    wednesday:["","","","",""],
+    thursday: ["","","","",""],
+    friday:["","","","",""],
+    saturday:["","","","",""],
+    sunday:["","","","",""],
+  
 
 };

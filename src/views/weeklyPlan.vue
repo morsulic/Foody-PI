@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-          <form class="login-form">
+          <form class="login-form" @submit.prevent="addWeeklyPlan">
             <div class="form-group">
               <h2 @click.prevent="isShowing0 ^= true" for="monday">
                 ˇ Monday
@@ -15,7 +15,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="1"
+                :day="0"
                 class="card"
                 v-show="isShowing0"
               />
@@ -30,7 +30,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="2"
+                :day="1"
                 class="card"
                 v-show="isShowing1"
               />
@@ -45,7 +45,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="3"
+                :day="2"
                 class="card"
                 v-show="isShowing2"
               />
@@ -60,7 +60,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="4"
+                :day="3"
                 v-show="isShowing3"
               />
             </div>
@@ -74,7 +74,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="5"
+                :day="4"
                 class="card"
                 v-show="isShowing4"
               />
@@ -89,7 +89,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="6"
+                :day="5"
                 class="card"
                 v-show="isShowing5"
               />
@@ -104,7 +104,7 @@
                 :lunch="lunch"
                 :snack="snack"
                 :dinner="dinner"
-                :day="7"
+                :day="6"
                 class="card"
                 v-show="isShowing6"
               />
@@ -134,6 +134,14 @@ export default {
       lunch: [],
       snack: [],
       dinner: [],
+      user: store.currentUser,
+      monday: store.monday,
+      tuesday: store.tuesday,
+      wednesday: store.wednesday,
+      thursday: store.thursday,
+      friday: store.friday,
+      saturday: store.saturday,
+      sunday: store.sunday,
       isShowing0: false,
       isShowing1: false,
       isShowing2: false,
@@ -159,6 +167,26 @@ export default {
       } else {
         return false;
       }
+    },
+    addWeeklyPlan() {
+      db.collection("weeklyPlan")
+        .add({
+          monday: this.monday,
+          tuesday: this.tuesday,
+          wednesday: this.wednesday,
+          thursday: this.thursday,
+          friday: this.friday,
+          saturday: this.saturday,
+          sunday: this.sunday,
+          user: this.user,
+          addedEt: Date.now(),
+        })
+        .then(() => {
+          alert("Data entered in base.");
+        })
+        .catch((e) => {
+          alert("Error " + e);
+        });
     },
   },
   components: {
