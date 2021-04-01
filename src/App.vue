@@ -9,6 +9,9 @@
       <router-link to="/weeklyPlan" v-if="store.currentUser"
         >Weekly plan</router-link
       >|
+      <router-link to="/groceryList" v-if="store.currentUser"
+        >Grocery List</router-link
+      >|
       <router-link to="/signUp" v-if="!store.currentUser">Sign up</router-link>|
       <router-link to="/login" v-if="!store.currentUser">Login</router-link>
       <a
