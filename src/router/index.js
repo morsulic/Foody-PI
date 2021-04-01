@@ -1,19 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Menu from '../views/mainMenu.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/mainMenu',
-    name: 'mainMenu',
-    component: () => import(/* webpackChunkName: "login" */ '../views/mainMenu.vue')
+    name: 'Menu',
+    component: Menu
   },
   {
     path: '/recipe',

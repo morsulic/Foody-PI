@@ -13,16 +13,24 @@
 
             <button
               type="button"
-              @click.prevent="pushRoute"
+              @click.prevent="pushRoute1"
               class="btn btn-primary menu-button first"
             >
               New weekly plan</button
             ><br />
-            <button type="button" class="btn btn-primary menu-button second">
+            <button
+              type="button"
+              @click.prevent="pushRoute2"
+              class="btn btn-primary menu-button second"
+            >
               View recipes</button
             ><br />
-            <button type="button" class="btn btn-primary menu-button third">
-              Add new food</button
+            <button
+              type="button"
+              @click.prevent="pushRoute3"
+              class="btn btn-primary menu-button third"
+            >
+              Add new recipes</button
             ><br />
             <p style="padding-bottom:140px;"></p>
           </form>
@@ -40,8 +48,14 @@ export default {
     return {};
   },
   methods: {
-    pushRoute() {
+    pushRoute1() {
       router.push({ name: "WeeklyPlan" });
+    },
+    pushRoute2() {
+      router.push({ name: "Recipes" });
+    },
+    pushRoute3() {
+      router.push({ name: "Recipe" });
     },
   },
 };

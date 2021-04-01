@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="Home" v-if="store.currentUser">Home</router-link>|
-      <router-link to="/mainMenu" v-if="store.currentUser">Menu</router-link>|
+      <router-link to="/" v-if="store.currentUser">Menu</router-link>|
       <router-link to="/recipe" v-if="store.currentUser">Recipe</router-link>|
       <router-link to="/recipes" v-if="store.currentUser"
         >Recipes Cards</router-link
@@ -41,7 +40,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.currentUser = user.email;
 
     if (!currentRoute.meta.needsUser) {
-      router.push({ name: "mainMenu" });
+      router.push({ path: "/" });
     }
   } else {
     //user is not signed in.

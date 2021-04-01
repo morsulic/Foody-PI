@@ -39,8 +39,9 @@
               ><br />
               <div class="form-group">
                 <croppa
-                  :width="150"
-                  :height="150"
+                  :width="200"
+                  :height="200"
+                  aria-placeholder="Add photo"
                   v-model="imageReference"
                 ></croppa>
               </div>
@@ -207,49 +208,38 @@ export default {
         alert("Some data was not entered or is corrupted!!");
       }
     },
-
-    /* numIngredientesMinus: function(ingridientes) {
-      this.ingredientes.splice(ingridientes, 1);
+    getImage() {
+      //Promise based omotač oko callbacka
+      return new Promise((resolveFn, errorFn) => {
+        this.imageReference.generateBlob((data) => {
+          resolveFn(data);
+        });
+      });
     },
-    numIngredientesPlus: function(ingridientes) {
-      this.ingredientes.push({
-        ingredient: this.ingridient,
-        quantity: this.quantity,
-        measUnit: this.measUnit,
-      });
-    },*/
+
     addRecipe() {
-      /*  const ingred = ingredientes.map((obj) => {
-        return Object.assign({}, obj);
-      });*/
-      this.imageReference.generateBlob((blobData) => {
-        console.log(blobData);
-
-        let imageName = "recipes/" + this.user + "/" + Date.now() + ".png";
-        console.log(imageName);
-
-        storage
-          .ref(imageName)
-          .put(blobData)
-          .then((result) => {
-            result.ref.getDownloadURL().then((url) => {
-              console.log("Javni link", url);
-            });
-          })
-          .catch((e) => {
-            console.error(e);
-          });
-      });
-      db.collection("recipe")
-        .add({
-          name: this.name,
-          category: this.category,
-          ingredientes: this.ingredientes,
-          preparation: this.preparation,
-          user: this.user,
-          addedEt: Date.now(),
+      this.getImage()
+        .then((data) => {
+          let imageName = store.currentUser + "/" + Date.now() + ".png";
+          return storage.ref(imageName).put(data);
         })
-        .then(() => {
+        .then((result) => {
+          //arrow funckija čuva this
+          //uspješna linija
+          return result.ref.getDownloadURL();
+        })
+        .then((imageReference) => {
+          return db.collection("recipe").add({
+            imageReference: imageReference,
+            name: this.name,
+            category: this.category,
+            ingredientes: this.ingredientes,
+            preparation: this.preparation,
+            user: this.user,
+            addedEt: Date.now(),
+          });
+        })
+        .then((doc) => {
           alert("Data entered in base.");
           this.name = "";
           this.category = "";

@@ -50,6 +50,7 @@ export default {
             this.breakfast.push({
               id: doc.id,
               name: data.name,
+              imageReference: data.imageReference,
               addedEt: data.addedEt,
               category: data.category,
               ingredientes: data.ingredientes,
@@ -153,3 +154,6 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+@import "@/assets/scss/main.scss";
+</style>

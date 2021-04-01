@@ -1,16 +1,15 @@
 <template>
   <div class="card text-left">
     <div class="card-body p-0">
-      {{ day }}
       <label for="breakfast">breakfast: </label>
       <div class="dropdown" id="dropdown">
         <input
           v-model.trim="inputValue[0]"
           list="breakfastList"
           class="dropdown-input"
-          type="text"
+          type="search"
           placeholder="Search..."
-          v-if="Object.keys(selectedItem).length === 0"
+          v-if="selectedItem[0].length === 0"
         />
         <datalist id="breakfastList">
           <dropdown-card
@@ -31,9 +30,9 @@
           v-model.trim="inputValue[1]"
           list="brunchList"
           class="dropdown-input"
-          type="text"
+          type="search"
           placeholder="Search..."
-          v-if="Object.keys(selectedItem).length === 0"
+          v-if="selectedItem[1].length === 0"
         />
         <datalist id="brunchList">
           <dropdown-card
@@ -53,9 +52,9 @@
           v-model.trim="inputValue[2]"
           list="lunchList"
           class="dropdown-input"
-          type="text"
+          type="search"
           placeholder="Search..."
-          v-if="Object.keys(selectedItem).length === 0"
+          v-if="selectedItem[2].length === 0"
         />
         <datalist id="lunchList">
           <dropdown-card
@@ -75,9 +74,9 @@
           v-model.trim="inputValue[3]"
           list="snackList"
           class="dropdown-input"
-          type="text"
+          type="search"
           placeholder="Search..."
-          v-if="Object.keys(selectedItem).length === 0"
+          v-if="selectedItem[3].length === 0"
         />
         <datalist id="snackList">
           <dropdown-card
@@ -97,9 +96,9 @@
           v-model.trim="inputValue[4]"
           list="dinnerList"
           class="dropdown-input"
-          type="text"
+          type="search"
           placeholder="Search..."
-          v-if="Object.keys(selectedItem).length === 0"
+          v-if="selectedItem[4].length === 0"
         />
         <datalist id="dinnerList">
           <dropdown-card
@@ -127,14 +126,13 @@ export default {
   data() {
     return {
       inputValue: ["", "", "", "", ""],
-      selectedItem: {},
+      selectedItem: ["", "", "", "", ""],
       breakfast1: [],
       brunch1: [],
       lunch1: [],
       snack1: [],
       dinner1: [],
       store,
-      listLoaded: true,
     };
   },
   methods: {
@@ -142,7 +140,7 @@ export default {
       let currentName = item.name.toLowerCase();
       if (this.day == 0) {
         store.monday[i] = this.inputValue[i];
-        console.log(store.monday[i]);
+        console.log(store.monday);
       }
       if (this.day == 1) {
         store.tuesday[i] = this.inputValue[i];
@@ -171,6 +169,11 @@ export default {
 
       let currentInput = this.inputValue[i].toLowerCase();
       return currentName.includes(currentInput);
+    },
+    selectItem(theItem, i) {
+      this.selectedItem[i] = theItem;
+      this.inputValue[i] = "";
+      this.$emit("on-item-selected", theItem);
     },
   },
 };
