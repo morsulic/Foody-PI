@@ -1,16 +1,93 @@
 <template>
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <h2 class="recipe">Recipe</h2>
-      <recipe-card
-        v-for="breakfast in breakfast"
-        :key="breakfast.id"
-        :info="breakfast"
-        class="card"
-      />
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <button
+          type="button"
+          @click.prevent="changeMeal(0)"
+          class="btn btn-primary menu-button first"
+        >
+          Breakfast</button
+        ><br />
+      </div>
+      <div class="col-sm">
+        <button
+          type="button"
+          @click.prevent="changeMeal(1)"
+          class="btn btn-primary menu-button first"
+        >
+          Brunch</button
+        ><br />
+      </div>
+      <div class="col-sm">
+        <button
+          type="button"
+          @click.prevent="changeMeal(2)"
+          class="btn btn-primary menu-button first"
+        >
+          Lunch</button
+        ><br />
+      </div>
+      <div class="col-sm">
+        <button
+          type="button"
+          @click.prevent="changeMeal(3)"
+          class="btn btn-primary menu-button first"
+        >
+          Snack</button
+        ><br />
+      </div>
+      <div class="col-sm">
+        <button
+          type="button"
+          @click.prevent="changeMeal(4)"
+          class="btn btn-primary menu-button first"
+        >
+          Dinner</button
+        ><br />
+      </div>
     </div>
-    <div class="col-1"></div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <recipe-card
+          v-for="breakfast in breakfast"
+          :key="breakfast.id"
+          :info="breakfast"
+          class="card"
+          v-show="isShowing0"
+        />
+        <recipe-card
+          v-for="brunch in brunch"
+          :key="brunch.id"
+          :info="brunch"
+          class="card"
+          v-show="isShowing1"
+        />
+        <recipe-card
+          v-for="lunch in lunch"
+          :key="lunch.id"
+          :info="lunch"
+          class="card"
+          v-show="isShowing2"
+        />
+        <recipe-card
+          v-for="snack in snack"
+          :key="snack.id"
+          :info="snack"
+          class="card"
+          v-show="isShowing3"
+        />
+        <recipe-card
+          v-for="dinner in dinner"
+          :key="dinner.id"
+          :info="dinner"
+          class="card"
+          v-show="isShowing4"
+        />
+      </div>
+      <div class="col-sm"></div>
+    </div>
   </div>
 </template>
 
@@ -28,8 +105,52 @@ export default {
       lunch: [],
       snack: [],
       dinner: [],
+      isShowing0: true,
+      isShowing1: false,
+      isShowing2: false,
+      isShowing3: false,
+      isShowing4: false,
       store,
     };
+  },
+  methods: {
+    changeMeal(i) {
+      if (i == 0) {
+        this.isShowing0 = true;
+        this.isShowing1 = false;
+        this.isShowing2 = false;
+        this.isShowing3 = false;
+        this.isShowing4 = false;
+      }
+      if (i == 1) {
+        this.isShowing0 = false;
+        this.isShowing1 = true;
+        this.isShowing2 = false;
+        this.isShowing3 = false;
+        this.isShowing4 = false;
+      }
+      if (i == 2) {
+        this.isShowing0 = false;
+        this.isShowing1 = false;
+        this.isShowing2 = true;
+        this.isShowing3 = false;
+        this.isShowing4 = false;
+      }
+      if (i == 3) {
+        this.isShowing0 = false;
+        this.isShowing1 = false;
+        this.isShowing2 = false;
+        this.isShowing3 = true;
+        this.isShowing4 = false;
+      }
+      if (i == 4) {
+        this.isShowing0 = false;
+        this.isShowing1 = false;
+        this.isShowing2 = false;
+        this.isShowing3 = false;
+        this.isShowing4 = true;
+      }
+    },
   },
   mounted() {
     this.getBreakfast;
@@ -125,7 +246,7 @@ export default {
         .where("category", "==", "Dinner")
         .get()
         .then((query) => {
-          this.Dinner = [];
+          this.dinner = [];
           query.forEach((doc) => {
             const data = doc.data();
             this.dinner.push({

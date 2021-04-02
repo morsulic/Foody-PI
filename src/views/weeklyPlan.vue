@@ -1,11 +1,12 @@
 <template>
   <div class="weeklyPlan">
-    <div class="container">
+    <div class="container.fluid">
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="login-form" @submit.prevent="addWeeklyPlan">
             <div class="form-group">
+              <h2>Weekly plan</h2>
               <h2 @click.prevent="isShowing0 ^= true" for="monday">
                 ˇ Monday
               </h2>

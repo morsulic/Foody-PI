@@ -2,8 +2,9 @@
   <div class="groceryList">
     <div class="container.fluid">
       <div class="row">
-        <div class="col-1"></div>
+        <div class="col-sm"></div>
         <div class="col-sm">
+          <h2>Weekly plan</h2>
           <table class="table">
             <thead>
               <tr>
@@ -22,7 +23,14 @@
             />
           </table>
         </div>
-        <div class="col-1"></div>
+        <div class="col-sm"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+          <h2>Grocery list</h2>
+        </div>
+        <div class="col-sm"></div>
       </div>
     </div>
   </div>
