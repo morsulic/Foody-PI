@@ -1,92 +1,99 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <button
-          type="button"
-          @click.prevent="changeMeal(0)"
-          class="btn btn-primary menu-button first"
-        >
-          Breakfast</button
-        ><br />
+    <div class="white-block">
+      <div
+        class="btn-toolbar"
+        role="toolbar"
+        aria-label="Toolbar with button groups"
+      >
+        <div class="col-sm">
+          <button
+            type="button"
+            @click.prevent="changeMeal(0)"
+            class="btn btn-primary menu-button first recipe"
+            style="margin-right: 0px"
+          >
+            Breakfast</button
+          ><br />
+        </div>
+        <div class="col-sm">
+          <button
+            type="button"
+            @click.prevent="changeMeal(1)"
+            class="btn btn-primary menu-button first recipe"
+          >
+            Brunch</button
+          ><br />
+        </div>
+        <div class="col-sm">
+          <button
+            type="button"
+            @click.prevent="changeMeal(2)"
+            class="btn btn-primary menu-button first recipe"
+          >
+            Lunch</button
+          ><br />
+        </div>
+        <div class="col-sm">
+          <button
+            type="button"
+            @click.prevent="changeMeal(3)"
+            class="btn btn-primary menu-button first recipe"
+          >
+            Snack</button
+          ><br />
+        </div>
+        <div class="col-sm">
+          <button
+            type="button"
+            @click.prevent="changeMeal(4)"
+            class="btn btn-primary menu-button first recipe"
+          >
+            Dinner</button
+          ><br />
+        </div>
       </div>
-      <div class="col-sm">
-        <button
-          type="button"
-          @click.prevent="changeMeal(1)"
-          class="btn btn-primary menu-button first"
-        >
-          Brunch</button
-        ><br />
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <recipe-card
+            v-for="breakfast in breakfast"
+            :key="breakfast.id"
+            :info="breakfast"
+            class="card"
+            v-show="isShowing0"
+          />
+          <recipe-card
+            v-for="brunch in brunch"
+            :key="brunch.id"
+            :info="brunch"
+            class="card"
+            v-show="isShowing1"
+          />
+          <recipe-card
+            v-for="lunch in lunch"
+            :key="lunch.id"
+            :info="lunch"
+            class="card"
+            v-show="isShowing2"
+          />
+          <recipe-card
+            v-for="snack in snack"
+            :key="snack.id"
+            :info="snack"
+            class="card"
+            v-show="isShowing3"
+          />
+          <recipe-card
+            v-for="dinner in dinner"
+            :key="dinner.id"
+            :info="dinner"
+            class="card"
+            v-show="isShowing4"
+          />
+        </div>
+        <div class="col-sm"></div>
       </div>
-      <div class="col-sm">
-        <button
-          type="button"
-          @click.prevent="changeMeal(2)"
-          class="btn btn-primary menu-button first"
-        >
-          Lunch</button
-        ><br />
-      </div>
-      <div class="col-sm">
-        <button
-          type="button"
-          @click.prevent="changeMeal(3)"
-          class="btn btn-primary menu-button first"
-        >
-          Snack</button
-        ><br />
-      </div>
-      <div class="col-sm">
-        <button
-          type="button"
-          @click.prevent="changeMeal(4)"
-          class="btn btn-primary menu-button first"
-        >
-          Dinner</button
-        ><br />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-10">
-        <recipe-card
-          v-for="breakfast in breakfast"
-          :key="breakfast.id"
-          :info="breakfast"
-          class="card"
-          v-show="isShowing0"
-        />
-        <recipe-card
-          v-for="brunch in brunch"
-          :key="brunch.id"
-          :info="brunch"
-          class="card"
-          v-show="isShowing1"
-        />
-        <recipe-card
-          v-for="lunch in lunch"
-          :key="lunch.id"
-          :info="lunch"
-          class="card"
-          v-show="isShowing2"
-        />
-        <recipe-card
-          v-for="snack in snack"
-          :key="snack.id"
-          :info="snack"
-          class="card"
-          v-show="isShowing3"
-        />
-        <recipe-card
-          v-for="dinner in dinner"
-          :key="dinner.id"
-          :info="dinner"
-          class="card"
-          v-show="isShowing4"
-        />
-      </div>
-      <div class="col-sm"></div>
     </div>
   </div>
 </template>
@@ -277,4 +284,24 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/scss/main.scss";
+
+button.recipe {
+  font-size: 10px !important;
+  background-color: white !important;
+  color: grey;
+  width: 70px !important;
+  margin-right: -30px !important;
+  text-align: left;
+}
+
+button.recipe:hover {
+  color: #000;
+  background-color: white !important;
+  border: 0px;
+}
+
+button.recipe:active {
+  border: 0px !important;
+  color: rgb(240, 137, 3);
+}
 </style>

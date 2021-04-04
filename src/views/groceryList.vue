@@ -1,36 +1,38 @@
 <template>
   <div class="groceryList">
     <div class="container.fluid">
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <h2>Weekly plan</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">/</th>
-                <th scope="col">Breakfast</th>
-                <th scope="col">Brunch</th>
-                <th scope="col">Lunch</th>
-                <th scope="col">Snack</th>
-                <th scope="col">Dinner</th>
-              </tr>
-            </thead>
-            <weekly-plan-card
-              v-for="weeklyPlan in weeklyPlan"
-              :key="weeklyPlan.id"
-              :info="weeklyPlan"
-            />
-          </table>
+      <div class="white-block">
+        <div class="row">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            <h2>Weekly plan</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">/</th>
+                  <th scope="col">Breakfast</th>
+                  <th scope="col">Brunch</th>
+                  <th scope="col">Lunch</th>
+                  <th scope="col">Snack</th>
+                  <th scope="col">Dinner</th>
+                </tr>
+              </thead>
+              <weekly-plan-card
+                v-for="weeklyPlan in weeklyPlan"
+                :key="weeklyPlan.id"
+                :info="weeklyPlan"
+              />
+            </table>
+          </div>
+          <div class="col-sm"></div>
         </div>
-        <div class="col-sm"></div>
-      </div>
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <h2>Grocery list</h2>
+        <div class="row">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            <h2>Grocery list</h2>
+          </div>
+          <div class="col-sm"></div>
         </div>
-        <div class="col-sm"></div>
       </div>
     </div>
   </div>
@@ -79,3 +81,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/scss/main.scss";
+
+table {
+  font-size: 9px;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <tbody>
     <tr>
-      <td><b>Monday</b></td>
+      <td><b>Mon</b></td>
       <td>{{ info.monday[0] }}</td>
       <td>{{ info.monday[1] }}</td>
       <td>{{ info.monday[2] }}</td>
@@ -9,7 +9,7 @@
       <td>{{ info.monday[4] }}</td>
     </tr>
     <tr>
-      <td><b>Tuesday</b></td>
+      <td><b>Tue</b></td>
       <td>{{ info.tuesday[0] }}</td>
       <td>{{ info.tuesday[1] }}</td>
       <td>{{ info.tuesday[2] }}</td>
@@ -17,7 +17,7 @@
       <td>{{ info.tuesday[4] }}</td>
     </tr>
     <tr>
-      <td><b>Wednesday</b></td>
+      <td><b>Wed</b></td>
       <td>{{ info.wednesday[0] }}</td>
       <td>{{ info.wednesday[1] }}</td>
       <td>{{ info.wednesday[2] }}</td>
@@ -33,7 +33,7 @@
       <td>{{ info.thursday[4] }}</td>
     </tr>
     <tr>
-      <td><b>Friday</b></td>
+      <td><b>Fri</b></td>
       <td>{{ info.friday[0] }}</td>
       <td>{{ info.friday[1] }}</td>
       <td>{{ info.friday[2] }}</td>
@@ -41,7 +41,7 @@
       <td>{{ info.friday[4] }}</td>
     </tr>
     <tr>
-      <td><b>Saturday</b></td>
+      <td><b>Sat</b></td>
       <td>{{ info.saturday[0] }}</td>
       <td>{{ info.saturday[1] }}</td>
       <td>{{ info.saturday[2] }}</td>
@@ -49,7 +49,7 @@
       <td>{{ info.saturday[4] }}</td>
     </tr>
     <tr>
-      <td><b>Sunday</b></td>
+      <td><b>Sun</b></td>
       <td>{{ info.sunday[0] }}</td>
       <td>{{ info.sunday[1] }}</td>
       <td>{{ info.sunday[2] }}</td>
