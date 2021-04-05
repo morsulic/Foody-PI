@@ -29,6 +29,11 @@
                 id="exampleInputPassword1"
                 placeholder="Password"
               />
+              <router-link
+                to="/forgotPassword"
+                style="font-size: 11px; color: #979ea5; padding-left:180px;"
+                >Forgot password?</router-link
+              >
             </div>
             <button type="button" @click="login" class="btn btn-primary">
               Login
