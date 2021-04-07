@@ -12,7 +12,7 @@
             </h1>
 
             <h2>Recipe</h2>
-            <hr />
+            <hr class="recipe" />
             <div class="form-group">
               <label for="name">Name</label>
               <input
@@ -39,15 +39,15 @@
               ><br />
               <div class="form-group">
                 <croppa
-                  :width="200"
-                  :height="200"
+                  :width="150"
+                  :height="150"
                   aria-placeholder="Add photo"
                   v-model="imageReference"
                 ></croppa>
               </div>
             </div>
             <div class="row">
-              <div class="col-5">
+              <div class="col-4">
                 <div class="form-group">
                   <label for="ingredient">Ingredient</label>
                   <input
@@ -59,7 +59,7 @@
                   />
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-4" style="margin-left: -30px;">
                 <div class="form-group">
                   <label for="quantity">Quantity</label>
                   <input
@@ -67,13 +67,13 @@
                     v-model="quantity"
                     class="form-control"
                     id="quantity"
-                    placeholder="Quantity"
+                    placeholder="0"
                   />
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-4" style="margin-left: -30px;">
                 <div class="form-group">
-                  <label for="measUnit">Meas unit</label>
+                  <label for="measUnit">Measure</label>
                   <select
                     class="form-control"
                     id="measUnit"
@@ -87,11 +87,16 @@
                   </select>
                 </div>
               </div>
-              <div class="col-sm">
+              <div
+                class="col-2"
+                style="margin-top: 15px; 
+              margin-left: -15px;"
+              >
                 <button
                   type="button"
                   @click.prevent="addIngredient"
                   class="btn btn-primary"
+                  style="width:35px; height: 35px;"
                 >
                   +
                 </button>
@@ -101,8 +106,12 @@
               <table class="table">
                 <tbody v-for="(ing, i) in ingredientes" :key="i">
                   <tr>
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ ing.ingredient }}</td>
+                    <th scope="row" style="font-weight: normal;">
+                      {{ i + 1 }}
+                    </th>
+                    <td style="font-weigt: bold; ">
+                      {{ ing.ingredient }}
+                    </td>
                     <td>{{ ing.quantity }}</td>
                     <td>{{ ing.measUnit }}</td>
                     <td>
@@ -110,6 +119,7 @@
                         type="button"
                         @click.prevent="deleteIngredient(i)"
                         class="btn btn-primary"
+                        style="height:30px; width: 30px; margin-top: -5px; font-size: 10px;"
                       >
                         x
                       </button>
@@ -264,7 +274,7 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/main.scss";
 
-hr {
+.hr.recipe {
   display: block;
   margin-top: 0px;
   margin-bottom: 10px;
@@ -272,7 +282,7 @@ hr {
   margin-right: 0;
   border-width: 7px;
   width: 100%;
-  color: #9bcb3b;
+  color: #9bcb3b !important;
 }
 
 select {
@@ -295,7 +305,20 @@ button {
 
 th,
 td {
-  border-bottom: 1px solid #ddd;
-  width: 80% !important;
+  border-bottom: 0px solid #ddd !important;
+  border-top: 0px;
+  text-align: center;
+}
+
+label {
+  font-size: 10px;
+}
+
+option {
+  font-size: 12px;
+}
+
+table {
+  font-size: 13px;
 }
 </style>

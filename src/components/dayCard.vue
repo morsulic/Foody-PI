@@ -182,6 +182,7 @@ export default {
 <style lang="scss">
 .card {
   margin-bottom: 20px;
+  border: none;
 }
 
 .card input[type="text"] {
