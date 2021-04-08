@@ -2,6 +2,19 @@
   <div class="groceryList">
     <div class="container.fluid">
       <div class="white-block">
+        <a @click="$router.go(-1)">
+          <img
+            src="https://img.icons8.com/android/20/000000/back.png"
+            class="rounded float-left"
+          />
+        </a>
+        <router-link to="/">
+          <h1 style="font-size: 20px;">
+            <span style="color: #000">F</span>
+            <span style="color: #FF7043">oo</span>
+            <span style="color: #000">dy</span>
+          </h1>
+        </router-link>
         <div class="row">
           <div class="col-sm"></div>
           <div class="col-sm">

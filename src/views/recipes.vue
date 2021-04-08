@@ -1,6 +1,19 @@
 <template>
   <div class="container">
     <div class="white-block">
+      <a @click="$router.go(-1)">
+        <img
+          src="https://img.icons8.com/android/20/000000/back.png"
+          class="rounded float-left"
+        />
+      </a>
+      <router-link to="/" v-if="store.currentUser">
+        <h1 style="font-size: 20px;">
+          <span style="color: #000">F</span>
+          <span style="color: #FF7043">oo</span>
+          <span style="color: #000">dy</span>
+        </h1>
+      </router-link>
       <div
         class="btn-toolbar"
         role="toolbar"
@@ -106,6 +119,7 @@
             v-show="isShowing4"
           />
         </div>
+        <br />
         <div class="col-sm"></div>
       </div>
     </div>

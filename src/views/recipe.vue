@@ -5,11 +5,20 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="login-form" @submit.prevent="addRecipe">
-            <h1 style="font-size: 20px;">
-              <span style="color: #000">F</span>
-              <span style="color: #FF7043">oo</span>
-              <span style="color: #000">dy</span>
-            </h1>
+            <a @click="$router.go(-1)">
+              <img
+                src="https://img.icons8.com/android/20/000000/back.png"
+                class="rounded float-left"
+              />
+            </a>
+
+            <router-link to="/">
+              <h1 style="font-size: 20px;">
+                <span style="color: #000">F</span>
+                <span style="color: #FF7043">oo</span>
+                <span style="color: #000">dy</span>
+              </h1>
+            </router-link>
 
             <h2>Recipe</h2>
             <hr class="recipe" />

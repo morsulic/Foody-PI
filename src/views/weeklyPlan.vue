@@ -5,6 +5,19 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="login-form" @submit.prevent="addWeeklyPlan">
+            <a @click="$router.go(-1)">
+              <img
+                src="https://img.icons8.com/android/20/000000/back.png"
+                class="rounded float-left"
+              />
+            </a>
+            <router-link to="/">
+              <h1 style="font-size: 20px;">
+                <span style="color: #000">F</span>
+                <span style="color: #FF7043">oo</span>
+                <span style="color: #000">dy</span>
+              </h1>
+            </router-link>
             <div class="form-group">
               <h2>Weekly plan</h2>
               <h2 @click.prevent="isShowing0 ^= true" for="monday">
@@ -124,6 +137,8 @@
 import { db } from "@/firebase";
 import store from "@/store";
 import dayCard from "@/components/dayCard.vue";
+import router from "@/router";
+
 export default {
   name: "Recipe",
 

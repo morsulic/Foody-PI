@@ -5,12 +5,15 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="menu-form">
+            <img
+              src="https://img.icons8.com/android/18/000000/shutdown.png"
+              class="rounded float-right"
+            />
             <h1 style="padding: 45px;">
               <span style="color: #000">F</span>
               <span style="color: #FF7043">oo</span>
               <span style="color: #000">dy</span>
             </h1>
-
             <button
               type="button"
               @click.prevent="pushRoute1"

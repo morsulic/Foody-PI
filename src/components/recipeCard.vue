@@ -21,7 +21,7 @@
       </table>
       <br />
       {{ info.preparation }}
-      <br />
+      <br /><br />
       {{ postedFromNow }}
     </div>
   </div>
