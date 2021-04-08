@@ -53,39 +53,53 @@
           ><br />
         </div>
       </div>
+      <br />
+      <div class="col-11">
+        <form class="form-inline">
+          <input
+            v-model="store.searchTerm"
+            class="form-control mr-sm-2"
+            id="pretraga"
+            type="search"
+            placeholder="Pretraga"
+            aria-label="Search"
+          />
+        </form>
+      </div>
+      <br />
       <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
           <recipe-card
-            v-for="breakfast in breakfast"
+            v-for="breakfast in filterBreakfast"
             :key="breakfast.id"
             :info="breakfast"
             class="card"
             v-show="isShowing0"
           />
           <recipe-card
-            v-for="brunch in brunch"
+            v-for="brunch in filterBrunch"
             :key="brunch.id"
             :info="brunch"
             class="card"
             v-show="isShowing1"
           />
           <recipe-card
-            v-for="lunch in lunch"
+            v-for="lunch in filterLunch"
             :key="lunch.id"
             :info="lunch"
             class="card"
             v-show="isShowing2"
           />
           <recipe-card
-            v-for="snack in snack"
+            v-for="snack in filterSnack"
             :key="snack.id"
             :info="snack"
             class="card"
             v-show="isShowing3"
           />
           <recipe-card
-            v-for="dinner in dinner"
+            v-for="dinner in filterDinner"
             :key="dinner.id"
             :info="dinner"
             class="card"
@@ -118,6 +132,7 @@ export default {
       isShowing3: false,
       isShowing4: false,
       store,
+      recipe: [],
     };
   },
   methods: {
@@ -268,14 +283,47 @@ export default {
         });
     },
 
-    /*filteredRecipe() {
+    filterBreakfast() {
       let termin = this.store.searchTerm;
 
-      return this.recipe.filter(
-        (recipe) =>
-          recipe.naslov.includes(terminFiltracije) || recipe.opis.includes(terminFiltracije)
+      return this.breakfast.filter(
+        (breakfast) =>
+          breakfast.name.includes(termin) ||
+          breakfast.preparation.includes(termin)
       );
-    },*/
+    },
+    filterBrunch() {
+      let termin = this.store.searchTerm;
+
+      return this.brunch.filter(
+        (brunch) =>
+          brunch.name.includes(termin) || brunch.preparation.includes(termin)
+      );
+    },
+    filterLunch() {
+      let termin = this.store.searchTerm;
+
+      return this.lunch.filter(
+        (lunch) =>
+          lunch.name.includes(termin) || lunch.preparation.includes(termin)
+      );
+    },
+    filterSnack() {
+      let termin = this.store.searchTerm;
+
+      return this.snack.filter(
+        (snack) =>
+          snack.name.includes(termin) || snack.preparation.includes(termin)
+      );
+    },
+    filterDinner() {
+      let termin = this.store.searchTerm;
+
+      return this.dinner.filter(
+        (dinner) =>
+          dinner.name.includes(termin) || dinner.preparation.includes(termin)
+      );
+    },
   },
   components: {
     recipeCard,
