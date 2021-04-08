@@ -25,7 +25,7 @@
       <td>{{ info.wednesday[4] }}</td>
     </tr>
     <tr>
-      <td><b>Thursday</b></td>
+      <td><b>Thu</b></td>
       <td>{{ info.thursday[0] }}</td>
       <td>{{ info.thursday[1] }}</td>
       <td>{{ info.thursday[2] }}</td>

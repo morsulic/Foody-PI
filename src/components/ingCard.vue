@@ -1,8 +1,8 @@
 <template>
   <tr>
-    <td>{{ recipe1 }}</td>
+    <td v-if="recipe1[0]">{{ recipe1[0].name }}</td>
     <td>{{ weeklyPlan[0].monday }}</td>
-    <td>{{ names }}</td>
+    <td v-if="names[0]">{{ names[0].name1 }}</td>
   </tr>
 </template>
 
@@ -41,18 +41,16 @@ export default {
           name1: this.weeklyPlan[0].sunday[i],
         });
       }
-      console.log(this.names);
-      let duzina = this.recipe.length;
-      for (let i = 0; i < duzina; i++) {
+
+      let length1 = this.recipe1.length;
+      for (let i = 0; i < length1; i++) {
         for (let j = 0; j < 35; j++) {
-          if (this.recipe.name[i] == this.names[j].name1) {
-            this.ingredientes.push({
-              ingredient: this.recipe.ingredientes[i],
-            });
-          }
+          let name1 = this.recipe1[0].name;
+          let name2 = this.names[0].name1;
+          console.log(this.recipe1[0].name);
+          console.log(this.names[0].name1);
         }
       }
-      console.log(this.ingredientes);
     },
   },
 };

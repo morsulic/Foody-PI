@@ -113,21 +113,21 @@ export default {
           });
         });
     },
-  },
-  getRecipes1() {
-    db.collection("recipe")
-      .get()
-      .then((query) => {
-        this.recipe1 = [];
-        query.forEach((doc) => {
-          const data = doc.data();
-          this.recipe1.push({
-            id: doc.id,
-            name: data.name,
-            ingredientes: data.ingredientes,
+    getRecipes1() {
+      db.collection("recipe")
+        .get()
+        .then((query) => {
+          this.recipe1 = [];
+          query.forEach((doc) => {
+            const data = doc.data();
+            this.recipe1.push({
+              id: doc.id,
+              name: data.name,
+              ingredientes: data.ingredientes,
+            });
           });
         });
-      });
+    },
   },
   components: {
     WeeklyPlanCard,
