@@ -30,6 +30,24 @@
           <div class="col-sm"></div>
           <div class="col-sm">
             <h2>Grocery list</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Ingredient</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Meas unit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ing-card
+                  v-for="recipe in recipe"
+                  :key="recipe.id"
+                  :recipe="recipe"
+                  :weeklyPlan="weeklyPlan"
+                  :recipe1="recipe1"
+                />
+              </tbody>
+            </table>
           </div>
           <div class="col-sm"></div>
         </div>
@@ -41,18 +59,23 @@
 import { db } from "@/firebase";
 import store from "@/store";
 import WeeklyPlanCard from "../components/weeklyPlanCard.vue";
-
+import IngCard from "../components/ingCard.vue";
+import RowCard from "../components/rowCard.vue";
 export default {
   name: "GroceryList",
   data() {
     return {
       weeklyPlan: [],
+      recipe: [],
+      recipe1: [],
     };
   },
   methods: {},
   mounted() {
     //dohvat iz Firebase
     this.getWeeklyPlan;
+    this.getRecipes;
+    this.getRecipes1;
   },
   computed: {
     getWeeklyPlan() {
@@ -75,9 +98,41 @@ export default {
           });
         });
     },
+    getRecipes() {
+      db.collection("recipe")
+        .get()
+        .then((query) => {
+          this.recipe = [];
+          query.forEach((doc) => {
+            const data = doc.data();
+            this.recipe.push({
+              id: doc.id,
+              name: data.name,
+              ingredientes: data.ingredientes,
+            });
+          });
+        });
+    },
+  },
+  getRecipes1() {
+    db.collection("recipe")
+      .get()
+      .then((query) => {
+        this.recipe1 = [];
+        query.forEach((doc) => {
+          const data = doc.data();
+          this.recipe1.push({
+            id: doc.id,
+            name: data.name,
+            ingredientes: data.ingredientes,
+          });
+        });
+      });
   },
   components: {
     WeeklyPlanCard,
+    IngCard,
+    RowCard,
   },
 };
 </script>
