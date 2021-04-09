@@ -40,18 +40,23 @@
           <div class="col-sm"></div>
         </div>
         <div class="row">
-          <div class="col-sm"></div>
-          <div class="col-sm">
-            <h2>Grocery list</h2>
+          <div class="grocery-list">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+              <h2 @click.prevent="isShowingGL ^= true" class="float-left">
+                ˇ Grocery list
+              </h2>
 
-            <ing-card
-              v-for="i in recipe"
-              :key="i.id"
-              :recipe="recipe"
-              :weeklyPlan="weeklyPlan"
-            />
+              <ing-card
+                v-for="i in recipe"
+                :key="i.id"
+                :recipe="recipe"
+                :weeklyPlan="weeklyPlan"
+                v-show="isShowingGL"
+              />
+            </div>
+            <div class="col-sm"></div>
           </div>
-          <div class="col-sm"></div>
         </div>
       </div>
     </div>
@@ -70,6 +75,7 @@ export default {
       weeklyPlan: [],
       recipe: [],
       helpList: ["1"],
+      isShowingGL: false,
     };
   },
   methods: {},

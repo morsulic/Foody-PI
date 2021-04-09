@@ -11,9 +11,7 @@
       <router-link hidden to="/weeklyPlan" v-if="store.currentUser"
         >Weekly plan</router-link
       >
-      <router-link hidden to="/groceryList" v-if="store.currentUser"
-        >Grocery List</router-link
-      >
+      <router-link to="/groceryList">Grocery List</router-link>
       <router-link hidden to="/signUp" v-if="!store.currentUser"
         >Sign up</router-link
       >
