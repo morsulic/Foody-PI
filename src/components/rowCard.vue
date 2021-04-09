@@ -1,14 +1,21 @@
 <template>
-  <tr>
-    <td>{{ ing }}</td>
-    <td>{{ qua }}</td>
-    <td>{{ mea }}</td>
-  </tr>
+  <tbody>
+    <tr>
+      <td>{{ info[0].ingredient }}</td>
+      <td>{{ info[0].quantity }}</td>
+      <td>{{ info[0].measUnit }}</td>
+    </tr>
+    <tr>
+      <td>{{ info[0].ingredient }}</td>
+      <td>{{ info[0].quantity }}</td>
+      <td>{{ info[0].measUnit }}</td>
+    </tr>
+  </tbody>
 </template>
 
 <script>
 export default {
-  props: ["ing", "qua", "mea"],
+  props: ["info"],
   name: "RowCard",
 };
 </script>

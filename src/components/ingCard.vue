@@ -1,23 +1,41 @@
 <template>
-  <tr>
-    <td v-if="recipe1[0]">{{ recipe1[0].name }}</td>
-    <td>{{ weeklyPlan[0].monday }}</td>
-    <td v-if="names[0]">{{ names[0].name1 }}</td>
-  </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ingredient</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Meas unit</th>
+        <th>{{ ingredientes[0] }}</th>
+      </tr>
+    </thead>
+    <row-card
+      v-for="ingredientes in ingredientes"
+      :key="ingredientes.id"
+      :info="ingredientes.ingredientes"
+    />
+  </table>
 </template>
 
 <script>
+import store from "@/store";
+import { db } from "@/firebase";
+import rowCard from "./rowCard.vue";
 export default {
-  props: ["recipe", "weeklyPlan", "recipe1"],
+  components: { rowCard },
+  props: ["recipe", "weeklyPlan"],
   name: "IngCard",
   data() {
-    return { names: [], ingredientes: [] };
+    return { names: [], ingredientes: [], store };
   },
   mounted() {
-    this.inputIgredient;
+    this.inputNames;
+    //this.inputIngredientes;
+    this.getRecipes;
+    //this.inputIngredientes;
   },
   computed: {
-    inputIgredient() {
+    inputNames() {
+      //console.log(this.recipe);
       for (let i = 0; i < 5; i++) {
         this.names.push({
           name1: this.weeklyPlan[0].monday[i],
@@ -41,15 +59,21 @@ export default {
           name1: this.weeklyPlan[0].sunday[i],
         });
       }
+    },
 
-      let length1 = this.recipe1.length;
-      for (let i = 0; i < length1; i++) {
-        for (let j = 0; j < 35; j++) {
-          let name1 = this.recipe1[0].name;
-          let name2 = this.names[0].name1;
-          console.log(this.recipe1[0].name);
-          console.log(this.names[0].name1);
-        }
+    getRecipes() {
+      for (let j = 0; j < 35; j++) {
+        db.collection("recipe")
+          .where("name", "==", this.names[j].name1)
+          .get()
+          .then((query) => {
+            query.forEach((doc) => {
+              const data = doc.data();
+              this.ingredientes.push({
+                ingredientes: data.ingredientes,
+              });
+            });
+          });
       }
     },
   },
