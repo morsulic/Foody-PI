@@ -20,7 +20,10 @@
         />
       </table>
       <br />
-      <p class="float-left p-recipe">{{ info.preparation }}</p>
+      <p class="float-left p-recipe">
+        <b>Preparation:</b><br />
+        {{ info.preparation }}
+      </p>
       <br />
       <p class="float-right p-date">{{ postedFromNow }}</p>
     </div>
