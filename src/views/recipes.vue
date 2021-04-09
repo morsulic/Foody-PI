@@ -220,7 +220,6 @@ export default {
     getBrunch() {
       db.collection("recipe")
         .where("category", "==", "Brunch")
-        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.brunch = [];
@@ -229,6 +228,7 @@ export default {
             this.brunch.push({
               id: doc.id,
               name: data.name,
+              imageReference: data.imageReference,
               addedEt: data.addedEt,
               category: data.category,
               ingredientes: data.ingredientes,
@@ -241,7 +241,6 @@ export default {
     getLunch() {
       db.collection("recipe")
         .where("category", "==", "Lunch")
-        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.lunch = [];
@@ -250,6 +249,7 @@ export default {
             this.lunch.push({
               id: doc.id,
               name: data.name,
+              imageReference: data.imageReference,
               addedEt: data.addedEt,
               category: data.category,
               ingredientes: data.ingredientes,
@@ -262,7 +262,6 @@ export default {
     getSnack() {
       db.collection("recipe")
         .where("category", "==", "Snack")
-        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.snack = [];
@@ -271,6 +270,7 @@ export default {
             this.snack.push({
               id: doc.id,
               name: data.name,
+              imageReference: data.imageReference,
               addedEt: data.addedEt,
               category: data.category,
               ingredientes: data.ingredientes,
@@ -283,7 +283,6 @@ export default {
     getDinner() {
       db.collection("recipe")
         .where("category", "==", "Dinner")
-        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.dinner = [];
@@ -292,6 +291,7 @@ export default {
             this.dinner.push({
               id: doc.id,
               name: data.name,
+              imageReference: data.imageReference,
               addedEt: data.addedEt,
               category: data.category,
               ingredientes: data.ingredientes,
