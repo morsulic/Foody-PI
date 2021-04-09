@@ -1,16 +1,16 @@
 <template>
-  <div class="card text-center">
+  <div class="card">
     <div class="card-header">{{ info.name }}</div>
-    <div class="card-body p-0">
+    <div class="card-body p-3">
       <img class="card-img-top" :src="info.imageReference" />
     </div>
     <div class="card-footer text-muted">
-      <table class="table">
+      <table class="table-borderless">
         <thead>
           <tr>
-            <th scope="col">Ingredient</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Meas unit</th>
+            <th scope="col">Ingredients</th>
+            <th scope="col" style="padding: 5px; color: #fff">Quantity</th>
+            <th scope="col" style="padding: 5px; color: #fff">Meas unit</th>
           </tr>
         </thead>
         <ingredient-card
@@ -20,9 +20,9 @@
         />
       </table>
       <br />
-      {{ info.preparation }}
-      <br /><br />
-      {{ postedFromNow }}
+      <p class="float-left p-recipe">{{ info.preparation }}</p>
+      <br />
+      <p class="float-right p-date">{{ postedFromNow }}</p>
     </div>
   </div>
 </template>
@@ -53,3 +53,59 @@ export default {
   components: { ingredientCard },
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/scss/main.scss";
+
+.card {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  margin-bottom: -20px;
+}
+
+.card-header {
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  background: none;
+  border-bottom: none;
+  margin-top: 5px;
+  margin-bottom: -10px;
+  text-decoration: underline;
+  text-decoration-color: #8bc34a;
+  text-decoration-thickness: 5px;
+}
+
+.card-footer {
+  background: none;
+  border-top: none;
+  margin-top: -20px;
+  margin-left: -15px;
+}
+
+.table-borderless {
+  font-size: 12px;
+  text-align: left;
+  margin: 15px;
+  color: #444444;
+}
+
+tr,
+td {
+  padding: 5px 0px;
+}
+
+.p-recipe {
+  margin-top: -30px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.p-date {
+  font-weight: normal;
+  color: #9f9f9f;
+  margin-top: -20px;
+}
+</style>

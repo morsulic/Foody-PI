@@ -120,7 +120,7 @@
           />
         </div>
         <br />
-        <div class="col-sm"></div>
+        <div class="col-sm"><br /></div>
       </div>
     </div>
   </div>
@@ -357,13 +357,18 @@ button.recipe {
 }
 
 button.recipe:hover {
-  color: #000;
+  color: #000 !important;
   background-color: white !important;
-  border: 0px;
+  border: none;
 }
 
 button.recipe:active {
-  border: 0px !important;
-  color: rgb(240, 137, 3);
+  border: none;
+  color: rgb(240, 137, 3) !important;
+}
+
+button.recipe:focus {
+  border: none;
+  color: rgb(240, 137, 3) !important;
 }
 </style>
