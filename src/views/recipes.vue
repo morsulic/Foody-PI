@@ -220,6 +220,7 @@ export default {
     getBrunch() {
       db.collection("recipe")
         .where("category", "==", "Brunch")
+        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.brunch = [];
@@ -240,6 +241,7 @@ export default {
     getLunch() {
       db.collection("recipe")
         .where("category", "==", "Lunch")
+        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.lunch = [];
@@ -260,6 +262,7 @@ export default {
     getSnack() {
       db.collection("recipe")
         .where("category", "==", "Snack")
+        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.snack = [];
@@ -280,6 +283,7 @@ export default {
     getDinner() {
       db.collection("recipe")
         .where("category", "==", "Dinner")
+        .orderBy("addedEt", "desc")
         .get()
         .then((query) => {
           this.dinner = [];

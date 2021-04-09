@@ -29,7 +29,6 @@ export default {
   mounted() {
     this.inputNames;
     this.getRecipes;
-    this.inputIngredient;
   },
   computed: {
     inputNames() {
