@@ -5,10 +5,11 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form class="menu-form">
-            <img
-              src="https://img.icons8.com/android/18/000000/shutdown.png"
-              class="rounded float-right"
-            />
+            <a @click="logout">
+              <img
+                src="https://img.icons8.com/android/18/000000/shutdown.png"
+                class="rounded float-right"
+            /></a>
             <h1 style="padding: 45px;">
               <span style="color: #000">F</span>
               <span style="color: #FF7043">oo</span>
@@ -44,6 +45,7 @@
   </div>
 </template>
 <script>
+import { firebase } from "@/firebase";
 import router from "@/router";
 export default {
   name: "mainMenu",
@@ -51,6 +53,14 @@ export default {
     return {};
   },
   methods: {
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ name: "Login" });
+        });
+    },
     pushRoute1() {
       router.push({ name: "WeeklyPlan" });
     },

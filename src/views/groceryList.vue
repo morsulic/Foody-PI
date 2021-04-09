@@ -45,7 +45,7 @@
             <h2>Grocery list</h2>
 
             <ing-card
-              v-for="i in helpList"
+              v-for="i in recipe"
               :key="i.id"
               :recipe="recipe"
               :weeklyPlan="weeklyPlan"

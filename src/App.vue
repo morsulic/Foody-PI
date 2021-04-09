@@ -1,20 +1,27 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" v-if="store.currentUser">Menu</router-link>|
-      <router-link to="/recipe" v-if="store.currentUser">Recipe</router-link>|
-      <router-link to="/recipes" v-if="store.currentUser"
+      <router-link hidden to="/" v-if="store.currentUser">Menu</router-link>
+      <router-link hidden to="/recipe" v-if="store.currentUser"
+        >Recipe</router-link
+      >
+      <router-link hidden to="/recipes" v-if="store.currentUser"
         >Recipes Cards</router-link
-      >|
-      <router-link to="/weeklyPlan" v-if="store.currentUser"
+      >
+      <router-link hidden to="/weeklyPlan" v-if="store.currentUser"
         >Weekly plan</router-link
-      >|
-      <router-link to="/groceryList" v-if="store.currentUser"
+      >
+      <router-link hidden to="/groceryList" v-if="store.currentUser"
         >Grocery List</router-link
-      >|
-      <router-link to="/signUp" v-if="!store.currentUser">Sign up</router-link>|
-      <router-link to="/login" v-if="!store.currentUser">Login</router-link>
+      >
+      <router-link hidden to="/signUp" v-if="!store.currentUser"
+        >Sign up</router-link
+      >
+      <router-link hidden to="/login" v-if="!store.currentUser"
+        >Login</router-link
+      >
       <a
+        hidden
         href="#"
         v-if="store.currentUser"
         @click.prevent="logout"

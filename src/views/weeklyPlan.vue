@@ -183,6 +183,7 @@ export default {
         return false;
       }
     },
+
     addWeeklyPlan() {
       db.collection("weeklyPlan")
         .add({
@@ -198,6 +199,7 @@ export default {
         })
         .then(() => {
           alert("Data entered in base.");
+          router.push({ name: "GroceryList" });
         })
         .catch((e) => {
           alert("Error " + e);
